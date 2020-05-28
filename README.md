@@ -1,4 +1,6 @@
-# Test-Github-Wiki
+# Test-Github-Wiki 
+
+From Wiki home page
 
 # iglu-data
 This repository is the data gathered together by Irina et. al as part of their aggie research project. [This page ](https://github.com/marymartin16/Test-Github-Wiki/wiki/table) contains a table of the datasets and whether or not they contain selected covariates.
