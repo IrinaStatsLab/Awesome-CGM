@@ -1,13 +1,12 @@
-# Test-Github-Wiki 
-
-From Wiki home page
-
-## iglu-data
-This repository is the data gathered together by Irina et. al as part of their aggie research project. [This page ](https://github.com/marymartin16/Test-Github-Wiki/wiki/table) contains a table of the datasets and whether or not they contain selected covariates.
-
-## dataset list
-
-Each data set is listed below by the first author on the original paper. The data sets are organized then by category. Click a data set to see its description, a link to the original paper, and additional information.
-
-* CGM
-  * [CGMRCT](https://github.com/marymartin16/Test-Github-Wiki/wiki/cgmrct)
+# Awesome-CGM
+This repository is a collection of publicly available continuous glucose monitoring (CGM) data gathered by Dr. Irina Gaynanova et. al as part of their Aggie Research Project. Click the name of data set for the link to download the CGM data, a link to original publication, a brief study summary, and more. 
+* [Aleppo (2017)](https://github.com/irinagain/Awesome-CGM/wiki/Aleppo-(2017))
+* [Anderson (2016)](https://github.com/irinagain/Awesome-CGM/wiki/Anderson-(2016))
+* [Dubosson (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Dubosson-(2018))
+* [Tsalikian (2005)](https://github.com/irinagain/Awesome-CGM/wiki/Tsalikian-(2005)) 
+* [Weinstock (2016)](https://github.com/irinagain/Awesome-CGM/wiki/Weinstock-(2016))
+* [CGMRCT](https://github.com/irinagain/Awesome-CGM/wiki/cgmrct)
+* [Pilot](https://github.com/irinagain/Awesome-CGM/wiki/pilot)
+* [Children200](https://github.com/irinagain/Awesome-CGM/wiki/children200)
+* [Hall (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Hall-(2018))
+* [Åm (2018)](https://github.com/irinagain/Awesome-CGM/wiki/%C3%85m-(2018))
