@@ -3,7 +3,7 @@ This is a collection of publicly available continuous glucose monitoring (CGM) d
 
 Click [here](https://github.com/irinagain/Awesome-CGM/wiki) to see a table of our data set collection along with additional information for each study. 
 
-Below is a list of our data set collection. Click the name of data set for the link to download the CGM data, a link to original paper, a brief study summary, and more.
+Below is a list of our data set collection. Click the name of a data set for the link to download the CGM data, a link to original paper, a brief study summary, and more.
 
 
 * [Aleppo (2017)](https://github.com/irinagain/Awesome-CGM/wiki/Aleppo-(2017))
