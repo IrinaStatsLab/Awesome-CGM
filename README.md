@@ -43,7 +43,7 @@ Below is a list of our data set collection. Click the name of a data set for the
   * Found by Mary Martin. CGM Processor by Sangaman Senthil. Uploaded by Mary Martin.
 
 * [Åm (2018)](https://github.com/irinagain/Awesome-CGM/wiki/%C3%85m-(2018))
-  * This study was done on an **animal model, specifically pigs,** in order to study sensor placement and the corresponding effects on CGM data. In order to simulate meals, glucose infusions were given to non-diabetic, anesthetized pigs through IV.
+  * This study was done on an **animal** model, specifically **pigs**, in order to study sensor placement and the corresponding effects on CGM data. In order to simulate meals, glucose infusions were given to non-diabetic, anesthetized pigs through IV.
   * Found by Elizabeth Chun. Uploaded by Elizabeth Chun.
 
 
