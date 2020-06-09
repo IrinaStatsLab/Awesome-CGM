@@ -1,5 +1,5 @@
 # Awesome-CGM
-This is a collection of publicly available continuous glucose monitoring (CGM) data gathered by Dr. Irina Gaynanova et. al as part of their Aggie Research Project. Below is a list of our data set collection. Click the name of data set for the link to download the CGM data, a link to original paper, a brief study summary, and more.  
+This is a collection of publicly available continuous glucose monitoring (CGM) data gathered by Dr. Irina Gaynanova et. al as part of their Aggie Research Project. Below is a list of our data set collection. Click the name of data set for the link to download the CGM data, a link to original paper, a brief study summary, and more. Click [here](https://github.com/irinagain/Awesome-CGM/wiki) to see a table of our data set collection along with additional information for each study.
 
 
 * [Aleppo (2017)](https://github.com/irinagain/Awesome-CGM/wiki/Aleppo-(2017))
@@ -42,4 +42,4 @@ This is a collection of publicly available continuous glucose monitoring (CGM) d
   * This study was done on an animal model, specifically pigs, in order to study sensor placement and the corresponding effects on CGM data. In order to simulate meals, glucose infusions were given to non-diabetic, anesthetized pigs through IV.
   * Found by Elizabeth Chun. Uploaded by Elizabeth Chun.
 
-Click [here](https://github.com/irinagain/Awesome-CGM/wiki) to see a table of our data set collection along with additional information for each study.
+
