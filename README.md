@@ -1,7 +1,7 @@
 # Awesome-CGM
 This is a collection of publicly available continuous glucose monitoring (CGM) data gathered by Dr. Irina Gaynanova, Elizabeth Chun, Mary Martin, David Buchanan, Eric Wang, and Sangaman Senthil as part of their Aggie Research Project. 
 
-Click [here](https://github.com/irinagain/Awesome-CGM/wiki) to see a table of our data set collection along with additional information for each study. 
+Click [here](https://github.com/irinagain/Awesome-CGM/wiki) to see a table of our data set collection.
 
 Below is a list of our data set collection. Click the name of a data set for a link to download the CGM data, pre-processing scripts, and covariate information.
 
