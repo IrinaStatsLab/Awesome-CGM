@@ -1,10 +1,6 @@
 # Contributing to Awesome-CGM
 
-Contribution and suggestions are welcome! Simply 
-
-1. [Fork this repository](https://help.github.com/articles/fork-a-repo/)
-2. Make a change to `README.md`
-3. [Submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
+Contribution are welcome! Simply [fork this repository](https://help.github.com/articles/fork-a-repo/), make a change to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md), and [submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
 Please ensure your pull request adheres to the following guidelines:
 
@@ -20,7 +16,7 @@ Sorted in alphabetical order by first author's last name by diabetes type
 
 Sorted in alphabetical order by first author's last name
 
-### 3. Create a new Wiki page titled *First Author's Last Name (Publication Year)* using the following format:
+### 3. Create a new Wiki page titled "First Author's Last Name (Publication Year)" using the following format:
 
 [Link to CGM data](link) - Download instructions
 
