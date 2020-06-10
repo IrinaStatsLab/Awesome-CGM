@@ -2,21 +2,21 @@
 
 Contribution are welcome! Simply [fork this repository](https://help.github.com/articles/fork-a-repo/), make a change to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md), and [submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
-Please ensure your pull request adheres to the following guidelines:
+Please ensure your pull request uses the following format:
 
-### 1. Add your data set to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md) list using the following format:  
+### 1. Add your data set to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md) list:  
 * [First Author's Last Name (Publication Year)](link to cgm data) 
   * short description including purpose of study, population group, sample size, diabetes type, CGM monitor type, and duration of study
   * contributions
   
 Sorted in alphabetical order by first author's last name by diabetes type
 
-### 2. Add your data set to [Home wiki page](https://github.com/irinagain/Awesome-CGM/wiki) table using the following formart:
+### 2. Add your data set to [Home wiki page](https://github.com/irinagain/Awesome-CGM/wiki) table:
 | First Author's Last Name (Publication Year) | Sample Size | Diabetes type | Population Group | CGM Device Type | Duration of Study |
 
 Sorted in alphabetical order by first author's last name
 
-### 3. Create a new Wiki page titled "First Author's Last Name (Publication Year)" using the following format:
+### 3. Create a new Wiki page titled "First Author's Last Name (Publication Year)":
 
 [Link to CGM data](link) - Download instructions
 
