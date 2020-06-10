@@ -6,12 +6,9 @@ Contribution and suggestions are welcome! Simply
 2. Make a change to `README.md`
 3. [Submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
-Please ensure your pull request adheres to the following guidelines:
-* Search previous suggestions before making a new one, as yours may be a duplicate.
-* Check your spelling and grammar.
-* New categories, or improvements to the existing categorization are welcome.
-
 Thank you for your suggestions!
+
+Please ensure your pull request adheres to the following guidelines:
 
 ### 1. Add your data set to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md) list using the following format:  
 * [First Author's Last Name (Publication Year)](link to cgm data) 
