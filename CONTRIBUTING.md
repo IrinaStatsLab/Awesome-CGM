@@ -6,9 +6,7 @@ Contribution and suggestions are welcome! Simply
 2. Make a change to `README.md`
 3. [Submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
-Thank you for your suggestions!
-
-Please ensure your pull request adheres to the following guidelines:
+Please ensure your pull request adheres to the following guidelines. Thank you for your suggestions!
 
 ### 1. Add your data set to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md) list using the following format:  
 * [First Author's Last Name (Publication Year)](link to cgm data) 
