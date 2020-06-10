@@ -8,19 +8,19 @@ Contribution and suggestions are welcome! Simply
 
 Please follow the instructions below:
 
-### Add your data set to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md) list using the following format:  
+### 1. Add your data set to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md) list using the following format:  
 * [First Author's Last Name (Publication Year)](link to cgm data) 
   * short description including purpose of study, population group, sample size, diabetes type, CGM monitor type, and duration of study
   * contributions
   
 Sorted in alphabetical order by first author's last name by diabetes type
 
-### Add your data set to [Home wiki page](https://github.com/irinagain/Awesome-CGM/wiki) table using the following formart:
+### 2. Add your data set to [Home wiki page](https://github.com/irinagain/Awesome-CGM/wiki) table using the following formart:
 | First Author's Last Name (Publication Year) | Sample Size | Diabetes type | Population Group | CGM Device Type | Duration of Study |
 
 Sorted in alphabetical order by first author's last name
 
-### Create a new Wiki page titled "First Author's Last Name (Publication Year)" using the following format:
+### 3. Create a new Wiki page titled "First Author's Last Name (Publication Year)" using the following format:
 
 [Link to CGM data](link) - Download instructions here.
 
