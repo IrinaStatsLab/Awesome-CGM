@@ -39,9 +39,9 @@ Below is a list of our data set collection. Click the name of a data set for a l
   * The purpose of this study was to identify factors associated with severe hypoglycemia in older adults (60+) with type 1 diabetes. The total sample size was 200 participants: 100 cases, 100 control. The Dexcom SEVEN PLUS was used to continuously monitor glucose levels for a span of 2 weeks.
   * Found by Mary Martin. CGM Processor by Sangaman Senthil. Uploaded by Mary Martin.
   
-  ### Type 2
+### Type 2
   
-  ### Other
+### Other
 * [Hall (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Hall-(2018))
   * This study analyzes how blood glucose fluctuates in healthy individuals by using a CGM to monitor glucose. Standardized meals (breakfast only) were given to a subset of patients in order to monitor the effect of meals on the glucose readings of healthy individuals. The subjects in this study had no prior diabetes diagnosis.
   * Found by Elizabeth Chun. CGM Processor by David Buchanan, Sangaman Senthil. Uploaded by Elizabeth Chun.
