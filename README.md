@@ -2,7 +2,7 @@
 
 This is a collection of links to publicly available continuous glucose monitoring (CGM) data.
 
-CGMs are small wearable devices that allow to measure glucose levels continuously throughout the day, with some meters taking measurements as often as every 5 min.
+CGMs are small wearable devices that allow to measure glucose levels continuously throughout the day, with some meters taking measurements as often as every 5 min. For the head start on CGM data analyses, check out our R package [iglu](https://github.com/irinagain/iglu).
 
 This collection follows the style of Mike Love's [awesome-multi-omics](https://github.com/mikelove/awesome-multi-omics) and Sean Davis' [awesome-single-cell](https://github.com/seandavi/awesome-single-cell) repos, although the latter are collections of methods rather than dataset links.
 
