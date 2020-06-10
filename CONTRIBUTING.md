@@ -1,4 +1,4 @@
-### Contributing to Awesome-CGM
+# Contributing to Awesome-CGM
 
 Contribution and suggestions are welcome! Simply 
 
