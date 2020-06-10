@@ -35,7 +35,7 @@ Short description including purpose of study, population group, sample size, dia
 
 The following data is available at the above link, in addition to the CGM data.
 
-List covariate data also available
+* List covariate data also available
 
 ## Pre-processing Scripts
 Below are scripts we have written to pre-process the data:
