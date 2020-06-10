@@ -12,7 +12,6 @@ Please follow the instructions below:
 * [First Author's Last Name (Publication Year)](link to cgm data) 
   * short description including purpose of study, population group, sample size, diabetes type, CGM monitor type, and duration of study
   * contributions
-  
 *Sorted in alphabetical order by first author's last name by diabetes type*
 
 ### Add your data set to [Home wiki page](https://github.com/irinagain/Awesome-CGM/wiki) table using the following formart:
