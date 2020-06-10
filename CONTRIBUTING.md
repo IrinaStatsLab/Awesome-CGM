@@ -10,5 +10,5 @@ Please ensure your pull request adheres to the following guidelines:
  
 - Use the following format: 
 > * [First Author's Last Name (Publication Date)](link to cgm data) 
->   * short study description including purpose, population group, sample size, diabetes type, CGM monitor, and duration. 
+>   * short description including purpose of study, population group, sample size, diabetes type, CGM monitor type, and duration of study 
 >   * contributions 
