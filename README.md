@@ -1,9 +1,20 @@
 # Awesome-CGM
-This is a collection of publicly available continuous glucose monitoring (CGM) data gathered by Dr. Irina Gaynanova, Elizabeth Chun, Mary Martin, David Buchanan, Eric Wang, and Sangaman Senthil as part of their Aggie Research Project. 
 
-Click [here](https://github.com/irinagain/Awesome-CGM/wiki) to see a table of our data set collection.
+This is a collection of links to publicly available continuous glucose monitoring (CGM) data.
 
-Below is a list of our data set collection. Click the name of a data set for a link to download the CGM data, pre-processing scripts, and covariate information.
+CGMs are small wearable devices that allow to measure glucose levels continuously throughout the day, with some meters taking measurements as often as every 5 min.
+
+This collection follows the style of Mike Love's [awesome-multi-omics](https://github.com/mikelove/awesome-multi-omics) and Sean Davis' [awesome-single-cell](https://github.com/seandavi/awesome-single-cell) repos, although the latter are collections of methods rather than dataset links.
+
+
+## Contributions
+
+The original list was assembled by Dr. Irina Gaynanova, Elizabeth Chun, Mary Martin, David Buchanan, Eric Wang, and Sangaman Senthil as part of their [Aggie Research Project](https://aggieresearch.tamu.edu). [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
+
+
+## Datasets
+
+Below is a list overview of all datasets with the links, the same list in a table format can be seen [here](https://github.com/irinagain/Awesome-CGM/wiki). Click the name of a data set for a link to download the CGM data, pre-processing scripts, and covariate information, as well as any additional dataset-specific use agreements.
 
 ### Type 1
 
