@@ -1,6 +1,6 @@
 # Contributing to Awesome-CGM
 
-Contribution are welcome! Simply [fork this repository](https://help.github.com/articles/fork-a-repo/), make a change to [README.md](https://github.com/irinagain/Awesome-CGM/blob/master/README.md), and [submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
+Contribution are welcome! Simply [fork this repository](https://help.github.com/articles/fork-a-repo/), make corresponding changes (see below), and [submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
 Please ensure your pull request uses the following format:
 
@@ -9,7 +9,7 @@ Please ensure your pull request uses the following format:
   * short description including purpose of study, population group, sample size, diabetes type, CGM monitor type, and duration of study
   * contributions
   
-Sorted in alphabetical order by first author's last name by diabetes type
+The list is sorted in alphabetical order by first author's last name (for each subsection/diabetes type)
 
 ### 2. Add your data set to [Home wiki page](https://github.com/irinagain/Awesome-CGM/wiki) table:
 | First Author's Last Name (Publication Year) | Sample Size | Diabetes type | Population Group | CGM Device Type | Duration of Study |
@@ -40,7 +40,6 @@ The following data is available at the above link, in addition to the CGM data.
 ## Pre-processing Scripts
 Below are scripts we have written to pre-process the data:
 - [CGM pre-processor](link to processor for CGM data) 
-
 
 
 ## Use agreements 
