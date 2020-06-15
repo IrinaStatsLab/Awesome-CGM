@@ -55,7 +55,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 ### Other
 * [Hall (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Hall-(2018))
   * This study analyzes how blood glucose fluctuates in healthy individuals by using a CGM to monitor glucose. Standardized meals (breakfast only) were given to a subset of patients in order to monitor the effect of meals on the glucose readings of healthy individuals. The subjects in this study had no prior diabetes diagnosis.
-  * Found by Elizabeth Chun. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
+  * Found by Elizabeth Chun. CGM Processor by David Buchanan, Sangaman Senthil, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
   
 * [Åm (2018)](https://github.com/irinagain/Awesome-CGM/wiki/%C3%85m-(2018))
   * This study was done on an **animal** model, specifically **pigs**, in order to study sensor placement and the corresponding effects on CGM data. In order to simulate meals, glucose infusions were given to non-diabetic, anesthetized pigs through IV.
