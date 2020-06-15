@@ -7,9 +7,12 @@ CGMs are small wearable devices that allow to measure glucose levels continuousl
 This collection follows the style of Mike Love's [awesome-multi-omics](https://github.com/mikelove/awesome-multi-omics) and Sean Davis' [awesome-single-cell](https://github.com/seandavi/awesome-single-cell) repos, although the latter are collections of methods rather than dataset links.
 
 
-## Contributions
+## Citation and contributions
+The original list was assembled by Mary Martin, Elizabeth Chun, David Buchanan, Eric Wang, and Sangaman Senthil as part of their [Aggie Research Project](https://aggieresearch.tamu.edu) under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
 
-The original list was assembled by Dr. Irina Gaynanova, Elizabeth Chun, Mary Martin, David Buchanan, Eric Wang, and Sangaman Senthil as part of their [Aggie Research Project](https://aggieresearch.tamu.edu). [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
+To cite current version 1.0.0, use 
+
+Mary Martin, Elizabeth Chun, David Buchanan, Eric Wang, Sangaman Senthil & Irina Gaynanova. (2020, June 15). irinagain/Awesome-CGM: List of public CGM datasets (Version v1.0.0). Zenodo. [![DOI](https://zenodo.org/badge/267687517.svg)](https://zenodo.org/badge/latestdoi/267687517)
 
 
 ## Datasets
