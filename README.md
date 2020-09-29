@@ -35,7 +35,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Chase (2005)](https://github.com/irinagain/Awesome-CGM/wiki/Chase-(2005))
   * This study focused on the use of the GlucoWatch G2 Biographer as a tool to help in diabetes care. The 200 subjects were randomly assigned to test (CGM) or control (self-monitoring blood glucose). At the end of the study duration, A1c measurements were used to compare the two groups.
-  * Found by Eric Wang. Uploaded by Elizabeth Chun, Mary Martin.
+  * Found by Elizabeth Chun (updated), Eric Wang (original). CGM Processors by Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
 
 * [Dubosson (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Dubosson-(2018))
   * This study focused on the use of wearable devices in a non clinical setting. There are nine type 1 diabetes patients. A large variety of data other than CGM data was collected for this study, designed for research on correlations between glucose levels and physiological measures such as ECG.
