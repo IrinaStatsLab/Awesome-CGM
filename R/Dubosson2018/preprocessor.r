@@ -38,7 +38,7 @@ for (i in 1:nfiles){
   curr$"id" = files[i]
   
   # Reorder and keep only the columns we want
-  curr = curr[c(6,2,3)]
+  curr = curr[curr$type=="cgm",c(6,2,3)]
   
   # Rename the columns to follow format
   colnames(curr) = c("id","time","gl")
