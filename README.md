@@ -35,7 +35,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Chase (2005)](https://github.com/irinagain/Awesome-CGM/wiki/Chase-(2005))
   * This study focused on the use of the GlucoWatch G2 Biographer as a tool to help in diabetes care. The 200 subjects were randomly assigned to test (CGM) or control (self-monitoring blood glucose). At the end of the study duration, A1c measurements were used to compare the two groups.
-  * Found by Elizabeth Chun (updated), Eric Wang (original). CGM Processors by Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
+  * Found by Eric Wang. Uploaded by Elizabeth Chun, Mary Martin.
 
 * [Dubosson (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Dubosson-(2018))
   * This study focused on the use of wearable devices in a non clinical setting. There are nine type 1 diabetes patients. A large variety of data other than CGM data was collected for this study, designed for research on correlations between glucose levels and physiological measures such as ECG.
@@ -64,5 +64,13 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * This study was done on an **animal** model, specifically **pigs**, in order to study sensor placement and the corresponding effects on CGM data. In order to simulate meals, glucose infusions were given to non-diabetic, anesthetized pigs through IV.
   * Found by Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.   
   
+### Simulators
 
+* [Xie (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Xie-(2018))
+  * This repo is a python implementation of the FDA-approved UVa/Padova Simulator for research purposes. It is "reinforcement-learning-ready", with a simulation enviroment which follows OpenAI gym and rllab APIs.
+  * Found by David Buchanan.
+
+* [Lehmann (2011)](https://github.com/irinagain/Awesome-CGM/wiki/Lehman-(2011))
+  * The AIDA simulator is intended for simulating the effects on the blood glucose profile of changes in insulin and diet for a typical insulin-dependent (type 1) diabetic patient. 
+  * Found by David Buchanan
 
