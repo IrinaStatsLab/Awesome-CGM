@@ -10,9 +10,9 @@ This collection follows the style of Mike Love's [awesome-multi-omics](https://g
 ## Citation and contributions
 The original list was assembled by Mary Martin, Elizabeth Chun, David Buchanan, Eric Wang, and Sangaman Senthil as part of their [Aggie Research Project](https://aggieresearch.tamu.edu) under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
 
-To cite current version 1.0.0, use 
+To cite current version 1.1.0, use 
 
-Mary Martin, Elizabeth Chun, David Buchanan, Eric Wang, Sangaman Senthil & Irina Gaynanova. (2020, June 15). irinagain/Awesome-CGM: List of public CGM datasets (Version v1.0.0). Zenodo. [![DOI](https://zenodo.org/badge/267687517.svg)](https://zenodo.org/badge/latestdoi/267687517)
+Mary Martin, Elizabeth Chun, David Buchanan, Rucha Bhat, Shaun Cass, Eric Wang, Sangaman Senthil & Irina Gaynanova. (2021, April 27). irinagain/Awesome-CGM: List of public CGM datasets (Version v1.1.0). Zenodo. [![DOI](https://zenodo.org/badge/267687517.svg)](https://zenodo.org/badge/latestdoi/267687517)
 
 
 ## Datasets
@@ -23,7 +23,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Aleppo (2017)](https://github.com/irinagain/Awesome-CGM/wiki/Aleppo-(2017))
   * The purpose of this study was to determine whether the use of continuous glucose monitoring (CGM) without blood glucose monitoring (BGM) measurements is as safe and effective as using CGM with BGM in adults (25-40) with type 1 diabetes. The total sample size was 225 participants. The Dexcom G4 was used to continuously monitor glucose levels for a span of 6 months.
-  * Found by Mary Martin. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Mary Martin, Elizabeth Chun.
+  * Found by Mary Martin. CGM Processor by David Buchanan, Elizabeth Chun. Updated R processor by Shaun Cass. Uploaded by Mary Martin, Elizabeth Chun.
   
 * [Anderson (2016)](https://github.com/irinagain/Awesome-CGM/wiki/Anderson-(2016))
   * This study was designed to test a closed-loop control-to-range artificial pancreas (AP) system. There are two phases to this study. Within Phase 1, there were various stages of this study starting with 0-3 weeks of practice with CGM. This was followed by 2 weeks using the study pump together with CGM known as sensor augmented pump (SAP) therapy. This was used as a baseline and followed by 2 weeks of overnight only closed loop control (CLC) and 2 weeks of 24/7 CLC. During the CLC weeks, insulin was administered by the AP system. Phase 2 continued with only 14 patients - physician’s choice. These 14 patients used the CLC system 24/7 for five additional months.
@@ -31,7 +31,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Buckingham (2007)](https://github.com/irinagain/Awesome-CGM/wiki/Buckingham-(2007))
   * This study was designed as a pilot study to analyze use of a CGM for children with diabetes. The subjects first established a baseline during a week blinded use, followed by at home use for 3 months.
-  * Found by Eric Wang. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
+  * Found by Eric Wang. CGM Processor by David Buchanan, Elizabeth Chun. Enhanced CGM processing by Rucha Bhat. Uploaded by Elizabeth Chun, Mary Martin.
 
 * [Chase (2005)](https://github.com/irinagain/Awesome-CGM/wiki/Chase-(2005))
   * This study focused on the use of the GlucoWatch G2 Biographer as a tool to help in diabetes care. The 200 subjects were randomly assigned to test (CGM) or control (self-monitoring blood glucose). At the end of the study duration, A1c measurements were used to compare the two groups.
