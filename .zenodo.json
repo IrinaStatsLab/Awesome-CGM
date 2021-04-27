@@ -1,0 +1,47 @@
+{
+    "description": "<ul>\n<li>added references to CGM data simulators</li>\n<li>minor update to Chase2005 preprocessor</li>\n<li>update to Dubosson2008 preprocessor to only keep CGM readings (eliminates SMBG)</li>\n<li>update Buckhingham2007 preprocessor to filter for data quality issues (readings too small or too large)</li>\n<li>add R processor to Aleppo2017 in addition to already existing python processor</li>\n</ul>", 
+    "license": "other-open", 
+    "title": "irinagain/Awesome-CGM: Updated release of public CGM datasets with simulators and enhanced processing", 
+    "version": "v1.1.0", 
+    "upload_type": "software", 
+    "publication_date": "2021-04-27", 
+    "creators": [
+        {
+            "name": "Mary Martin"
+        }, 
+        {
+            "name": "David Buchanan"
+        }, 
+        {
+            "name": "Elizabeth Chun"
+        }, 
+        {
+            "name": "Rucha Bhat"
+        }, 
+        {
+            "name": "Shaun Cass"
+        }, 
+        {
+            "name": "Eric Wang"
+        }, 
+        {
+            "name": "Sangaman Senthil"
+        }, 
+        {
+            "name": "Irina Gaynanova"
+        }
+    ], 
+    "access_right": "open", 
+    "related_identifiers": [
+        {
+            "scheme": "url", 
+            "identifier": "https://github.com/irinagain/Awesome-CGM/tree/v1.1.0", 
+            "relation": "isSupplementTo"
+        }, 
+        {
+            "scheme": "doi", 
+            "identifier": "10.5281/zenodo.3895210", 
+            "relation": "isVersionOf"
+        }
+    ]
+}
