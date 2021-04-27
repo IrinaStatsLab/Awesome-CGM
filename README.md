@@ -12,7 +12,7 @@ The original list was assembled by Mary Martin, Elizabeth Chun, David Buchanan, 
 
 To cite current version 1.1.0, use 
 
-Mary Martin, Elizabeth Chun, David Buchanan, Rucha Bhat, Shaun Cass, Eric Wang, Sangaman Senthil & Irina Gaynanova. (2021, April 27). irinagain/Awesome-CGM: List of public CGM datasets (Version v1.1.0). Zenodo. [![DOI](https://zenodo.org/badge/267687517.svg)](https://zenodo.org/badge/latestdoi/267687517)
+Mary Martin, Elizabeth Chun, David Buchanan, Rucha Bhat, Shaun Cass, Eric Wang, Sangaman Senthil & Irina Gaynanova. (2021, April 27). irinagain/Awesome-CGM: List of public CGM datasets (Version v1.1.0). Zenodo. [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4723654.svg)](https://doi.org/10.5281/zenodo.4723654)
 
 
 ## Datasets
