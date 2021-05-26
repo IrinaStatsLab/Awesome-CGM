@@ -85,13 +85,14 @@ write.csv(aleppo[,c("id", "time", "gl")], file = newfile, row.names = FALSE)
 ## was too large for this dataset and glucose metrics on subjects
 ## with this long of a  time gap may be inaccurate.
 ## 13 subjects in total get removed from the dataset under this criteria.
-## Also, glucose values above 500 were determined to be most likely due to
-## measurement error and were set to NA accordingly.
+## Also, the study used a Dexcom G4 Platinum which only measures glucose 
+## in the 40 - 400 mg/dL range so readings outside this range were set to NA.
 
 # Aleppo <- Aleppo %>%
 #   # Assuming 30 days = 1 month.
 #   filter(max_time_gap/(60*60*24*30) <= 3) %>% # max_time_gap is in seconds
-#   mutate(gl = replace(gl, gl > 500, NA)) %>%
+#   mutate(gl = replace(gl, gl > 400, NA)) %>%
+#   mutate(gl = replace(gl, gl < 40, NA)) %>%
 #   select(-max_time_gap)
 
 ## Additionally, through the use of plot_glu() graphics from the iglu package,
