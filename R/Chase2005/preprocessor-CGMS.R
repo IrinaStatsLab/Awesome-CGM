@@ -22,10 +22,31 @@ file.path <- "DirecNetOupatientRandomizedClinicalTrial/DataTables/tblCDataCGMS.c
 
 # Read the raw data in 
 curr = read.csv(file.path, header = TRUE, stringsAsFactors = FALSE)
+old = curr
+
+# Figure out automatically which values have AM/PM indicator
+indexAM = grep("AM", curr$ReadingTm)
+indexPM = grep("PM", curr$ReadingTm)
+timeInfo = paste(as.Date(curr$ReadingDt), curr$ReadingTm)
+
+# problem - original table codes some times as AM/PM; and some times as 24 hours
+time = rep(as.POSIXct(NA), length(timeInfo))
+# part of the conversion doesn't work because of time zone,
+# need to figure out which one is correct
+# definitely not CST, EST seems to work
+# by default - use AM/PM conversion first
+tz = "EST"
+time[indexAM] = as.POSIXct(timeInfo[indexAM], format = "%Y-%m-%d %I:%M %p", tz = "EST")
+time[indexPM] = as.POSIXct(timeInfo[indexPM], format = "%Y-%m-%d %I:%M %p", tz = "EST")
+# Then substitute anything that is NA by 24  hour conversion
+newtime = as.POSIXct(timeInfo, format = "%Y-%m-%d %H:%M", tz = "EST")
+time[is.na(time)] = newtime[is.na(time)]
+
 
 # combine date and time into standard format
-curr$time = as.POSIXct(paste(as.Date(curr$ReadingDt), curr$ReadingTm),
-                       format = "%Y-%m-%d %I:%M %p")
+curr$time = time
+
+
 
 # reorder and select only id, time, gl columns
 curr = curr[, c(2,7,6)]
