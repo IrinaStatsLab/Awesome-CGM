@@ -40,6 +40,10 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 * [Dubosson (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Dubosson-(2018))
   * This study focused on the use of wearable devices in a non clinical setting. There are nine type 1 diabetes patients. A large variety of data other than CGM data was collected for this study, designed for research on correlations between glucose levels and physiological measures such as ECG.
   * Found by Elizabeth Chun. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
+  
+* [Marling (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Marling-(2019))
+  * This study has 12 type 1 diabetes patients. 
+  * Found by Irina Gaynanova. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun.
 
 * [Tamborlane (2008)](https://github.com/irinagain/Awesome-CGM/wiki/Tamborlane-(2008))
   * This study was designed to test CGM as a technology to assist in diabetes care. The randomized trial was intended to determine if CGM usage had a positive effect on diabetes management. The total subjects were split into two cohorts based on A1c results, with one cohort having initial A1c measurements from 7-10% and the second cohort of those with A1c levels <7%. Within each cohort, subjects were randomly assigned to a test (CGM) or control group.
@@ -56,6 +60,10 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 ### Type 2
   
 ### Other
+* [Colas (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Colas-(2019))
+  * This study has 208 subjects, all healthy at study start and 17 developed type 2 diabetes by study end. 
+  * Found by Elizabth Chun. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun.
+
 * [Hall (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Hall-(2018))
   * This study analyzes how blood glucose fluctuates in healthy individuals by using a CGM to monitor glucose. Standardized meals (breakfast only) were given to a subset of patients in order to monitor the effect of meals on the glucose readings of healthy individuals. The subjects in this study had no prior diabetes diagnosis.
   * Found by Elizabeth Chun. CGM Processor by David Buchanan, Sangaman Senthil, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
