@@ -66,5 +66,5 @@ example_data_hall = read.csv('Hall2018_processed.csv') %>%
 
 meal_metrics(hall_sub, meals_sub, interpolate = TRUE, adjust_mealtimes = TRUE)
 
-save(example_data_hall, file = 'example_data_hall.rda')
-save(example_meals_hall, file = 'example_meals_hall.rda')
+save(example_data_hall, file = 'example_data_hall.rda', version = 2)
+save(example_meals_hall, file = 'example_meals_hall.rda', version = 2)
