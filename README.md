@@ -62,7 +62,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 ### Other
 * [Colas (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Colas-(2019))
   * This study has 208 subjects, all healthy at study start and 17 developed type 2 diabetes by study end. 
-  * Found by Elizabth Chun. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun.
+  * Found by Elizabeth Chun. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun.
 
 * [Hall (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Hall-(2018))
   * This study analyzes how blood glucose fluctuates in healthy individuals by using a CGM to monitor glucose. Standardized meals (breakfast only) were given to a subset of patients in order to monitor the effect of meals on the glucose readings of healthy individuals. The subjects in this study had no prior diabetes diagnosis.
