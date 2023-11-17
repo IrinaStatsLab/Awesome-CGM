@@ -59,8 +59,9 @@ write.table(curr, file = paste(dataset, "_meals.csv", sep = ""),
 library("RSQLite")
 
 ## connect to db
+filename = '' # insert your path for db file
 con <- dbConnect(drv=RSQLite::SQLite(),
-                 dbname='C:\\Users\\7ylch\\Documents\\Dr_G\\Hall2018\\pbio.2005143.s014.db')
+                 dbname=filename)
 
 ## list all tables
 tables <- dbListTables(con)
