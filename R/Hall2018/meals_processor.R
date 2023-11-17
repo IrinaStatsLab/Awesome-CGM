@@ -55,16 +55,34 @@ write.table(curr, file = paste(dataset, "_meals.csv", sep = ""),
             append = T, sep = ",")
 
 
-### to create a subset of meals and cgm data for example testing
-ids = unique(meals$id)[c(7, 10, 13)]
-example_meals_hall = meals %>%
-  filter(id %in% ids) %>%
-  filter(grepl('1', meal))
+### get db file
+library("RSQLite")
+
+## connect to db
+con <- dbConnect(drv=RSQLite::SQLite(),
+                 dbname='C:\\Users\\7ylch\\Documents\\Dr_G\\Hall2018\\pbio.2005143.s014.db')
+
+## list all tables
+tables <- dbListTables(con)
+clinical = dbGetQuery(conn=con, statement=paste0("Select * FROM '", tables[[1]], "'"))
+
+subset = clinical %>%
+  dplyr::filter(diagnosis %in% c("diabetic", 'pre-diabetic')) %>%
+  dplyr::select(id = userID, diagnosis = diagnosis)
 
 example_data_hall = read.csv('Hall2018_processed.csv') %>%
-  filter(id %in% ids)
+  dplyr::right_join(subset, by = "id")
 
-meal_metrics(hall_sub, meals_sub, interpolate = TRUE, adjust_mealtimes = TRUE)
+### to create a subset of meals and cgm data for example testing
+id_intersect = intersect(unique(meals$id), unique(example_data_hall$id))
+id_sub = subset %>%
+  dplyr::filter(id %in% id_intersect) %>%
+  dplyr::filter(diagnosis == 'diabetic')
+example_meals_hall = meals %>%
+  dplyr::filter(id %in% id_sub$id) %>%
+  dplyr::filter(grepl('1', meal))
+
+tmp = meal_metrics(example_data_hall, example_meals_hall)
 
 save(example_data_hall, file = 'example_data_hall.rda', version = 2)
 save(example_meals_hall, file = 'example_meals_hall.rda', version = 2)
