@@ -42,8 +42,9 @@ curr = curr[c(2,7,6)]
 # Renaming the columns the standard format names
 colnames(curr) = c("id","time","gl")
 
-#Ensure glucose values are recorded as numeric
+#Ensure glucose values are recorded as numeric and that time zone is preserved
 curr$gl = as.numeric(curr$gl)
+curr$time = format(curr$time, usetz = TRUE)
 
 # Save the cleaned data to the created dataset folder
 # The cleaned file will be named "dataset"_processed.csv
