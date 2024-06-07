@@ -20,7 +20,8 @@ setwd(dataset)
 file.path <- paste("DirecNetInPtExercise", "DataTables/", sep = "/")
 # Depending on how you have unzipped the file, you may need to edit this slightly
 
-# This is the relative path to the CGM file with original names
+# These are the relative paths to the CGM file with original names and
+# the Roster file with study site IDs, which are needed for time zone assignment
 # Depending on how you have unzipped the file, you may need to edit this slightly
 file.path <- "DirecNetInPtExercise/DataTables/tblDDataCGMS.csv"
 file.path.2 <- "DirecNetInPtExercise/DataTables/tblDPtRoster.csv"
