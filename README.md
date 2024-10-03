@@ -40,10 +40,18 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 * [Dubosson (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Dubosson-(2018))
   * This study focused on the use of wearable devices in a non clinical setting. There are nine type 1 diabetes patients. A large variety of data other than CGM data was collected for this study, designed for research on correlations between glucose levels and physiological measures such as ECG.
   * Found by Elizabeth Chun. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
-  
+
+* [Lynch (2022)] (github link)
+  * The study aims to evaluate the transition of Type 1 diabetes management from a hybrid closed-loop system using an insulin pump and CGM to a biotic pancreas. The Dexcom G6 CGM was used across a population group aged between 6 and 71 years over a 13-week period, with a sample size of 90 participants.
+  * Found by Charlotte Xu . Updated R processor by  . Uploaded by  .
+
 * [Marling (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Marling-(2019))
   * This study has 12 type 1 diabetes patients. 
   * Found by Irina Gaynanova. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun.
+
+* [O’Mally (2021)] (github link)
+  * This study examined the use of the Dexcom G6 CGM and t:Slim X2 with Control-IQ Technology among children and adults (ages 14+). The study duration was 6 months with a sample size of 168 participants.
+  * Found by  . Updated R processor by  . Uploaded by  .
 
 * [Tamborlane (2008)](https://github.com/irinagain/Awesome-CGM/wiki/Tamborlane-(2008))
   * This study was designed to test CGM as a technology to assist in diabetes care. The randomized trial was intended to determine if CGM usage had a positive effect on diabetes management. The total subjects were split into two cohorts based on A1c results, with one cohort having initial A1c measurements from 7-10% and the second cohort of those with A1c levels <7%. Within each cohort, subjects were randomly assigned to a test (CGM) or control group.
@@ -53,11 +61,18 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * The purpose of this study was to find out how often low blood sugar (hypoglycemia) occurs during the night after exercise in late afternoon for children aged 10 to 18 with type 1 diabetes. The total sample size was 50 participants. The OneTouch Ultra Meter was used to continuously monitor glucose levels during two seperate 24 hours periods.
   * Found by Eric Wang. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Mary Martin, Elizabeth Chun.
 
+* [Wadwa (2023)](github link)
+  * The purpose of this study was to improve glycemic outcomes in young children (ages 2-6) with Type 1 diabetes using the t:slim X2 insulin pump with Control-IQ Technology and Dexcom G6 CGM. The study spanned 13 weeks with a total sample size of 102 participants.
+  * Found by Charlotte Xu. Updated R processor by  . Uploaded by  .
+
 * [Weinstock (2016)](https://github.com/irinagain/Awesome-CGM/wiki/Weinstock-(2016))
   * The purpose of this study was to identify factors associated with severe hypoglycemia in older adults (60+) with type 1 diabetes. The total sample size was 200 participants: 100 cases, 100 control. The Dexcom SEVEN PLUS was used to continuously monitor glucose levels for a span of 2 weeks.
   * Found by Mary Martin. CGM Processor by Sangaman Senthil, Elizabeth Chun. Uploaded by Mary Martin, Elizabeth Chun.
   
 ### Type 2
+* [Broll (2021)](github link)
+   * The study involved Type 2 diabetic individuals using the Dexcom G4 CGM. Data from 5 subjects is provided as an example dataset for the development of the ‘iglu’ package (https://github.com/irinagain/iglu). 
+  * Found by Irina Gaynanova. Uploaded by Charlotte Xu .
   
 ### Other
 * [Colas (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Colas-(2019))
@@ -70,7 +85,12 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   
 * [Åm (2018)](https://github.com/irinagain/Awesome-CGM/wiki/%C3%85m-(2018))
   * This study was done on an **animal** model, specifically **pigs**, in order to study sensor placement and the corresponding effects on CGM data. In order to simulate meals, glucose infusions were given to non-diabetic, anesthetized pigs through IV.
-  * Found by Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.   
+  * Found by Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
+  
+* [Shah (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Colas-(2019)) 
+  * The purpose of this study was to evaluate glucose control in a mixed population (ages 6 and older) and  to establish reference sensor glucose ranges in healthy, non-diabetic individuals using the Dexcom G6 CGM. The sample size was 153 participants, with varying study duration. 
+ * Found by Charlotte Xu. Updated R processor by Charlotte Xu. Uploaded by Charlotte Xu .
+
   
 ### Simulators
 
