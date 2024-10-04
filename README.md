@@ -45,7 +45,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * This study focused on the use of wearable devices in a non clinical setting. There are nine type 1 diabetes patients. A large variety of data other than CGM data was collected for this study, designed for research on correlations between glucose levels and physiological measures such as ECG.
   * Found by Elizabeth Chun. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
 
-* [Lynch (2022)]((https://github.com/irinagain/Awesome-CGM/wiki/Lynch (2022)))
+* [Lynch (2022)]((https://github.com/irinagain/Awesome-CGM/wiki/Lynch (2022))
   * The study aims to evaluate the transition of Type 1 diabetes management from a hybrid closed-loop system using an insulin pump and CGM to a biotic pancreas. The Dexcom G6 CGM was used across a population group aged between 6 and 71 years over a 13-week period, with a sample size of 90 participants.
   * Found by Charlotte Xu . Updated R processor by  . Uploaded by  .
 
