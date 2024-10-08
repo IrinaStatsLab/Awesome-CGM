@@ -10,7 +10,6 @@ data <- read_sas("iobp2devicecgm.sas7bdat")
 demo <- read_sas("iobp2diabscreening.sas7bdat")
 age <- read_sas("iobp2ptroster.sas7bdat")
 
-surgery <- read_sas(".sas7bdat")
 
 # Select only necessary variables
 data = data %>% select(PtID, DeviceDtTm, Value)
