@@ -45,7 +45,7 @@ process_dataset <- function(file_path) {
     group_by(id) %>%
     summarise(distinct_days_with_data = n_distinct(date))
   
-  # Function to calculate inclusion based on your criteria
+  # Function to calculate inclusion based on exclusion criteria
   calculate_inclusion <- function(time_span_days, distinct_days_with_data, total_entries) {
     if (is.na(time_span_days)) {
       return(0)
@@ -108,6 +108,6 @@ process_all_datasets <- function(folder_path, output_file, output_vector) {
   }
 }
 
-# Run the function to process all datasets and save results to 'Exclusion_check.txt' and save removeable ids
+# Run the function to remove profiles with too high missing data from all datasets and save to original data folder
 process_all_datasets("csv_data")
 
