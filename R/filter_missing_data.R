@@ -89,8 +89,8 @@ process_dataset <- function(file_path) {
   # Filter out ids that have too high of missingness
   filtered_data = data %>% filter(id %in% exclusion_ids)
   
-  # Add "_filtered.csv" to the file path for final data
-  new_file_path <- paste0(file_path_sans_ext(file_path), "_filtered.csv")
+  # Add "_final.csv" to the file path for final data
+  new_file_path <- paste0(file_path_sans_ext(file_path), "_final.csv")
   
   # Save the filtered data with the new file name
   write_csv(filtered_data, new_file_path)
