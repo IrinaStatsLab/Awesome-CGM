@@ -8,7 +8,14 @@ This collection follows the style of Mike Love's [awesome-multi-omics](https://g
 
 
 ## Citation and contributions
-The original list was assembled by Mary Martin, Elizabeth Chun, David Buchanan, Eric Wang, and Sangaman Senthil as part of their [Aggie Research Project](https://aggieresearch.tamu.edu) under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
+
+The new list was updated in October 2024 and assembled by Charlotte Xu, Neo Kok, and Samuel Tan, under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
+
+To cite current version 1.2.0, use
+
+[New Zenodo Citation]
+
+The original list was assembled by Mary Martin, Elizabeth Chun, David Buchanan, Eric Wang, and Sangaman Senthil as part of their [Aggie Research Project](https://aggieresearch.tamu.edu) under the supervision of Dr. Irina Gaynanova. 
 
 To cite current version 1.1.0, use 
 
