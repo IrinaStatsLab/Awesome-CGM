@@ -27,25 +27,15 @@ T1DE_combined <- T1DE %>%
   mutate(DeviceDate = pseudo_start_date + days(DeviceDtDaysFromEnroll),
          # Combine DeviceDate and DeviceTm to create a DateTime column
          DateTime = as.POSIXct(paste(DeviceDate, DeviceTm), format = "%Y-%m-%d %H:%M:%S")) %>%
-  # Select relevant columns and rename them for consistency
   select(id = PtID, time = DateTime, gl = Value, sex = Gender, age = AgeAsOfEnrollDt) %>%
-  # Ensure the time is correctly formatted as POSIXct
   mutate(time = as.POSIXct(time, format = "%Y-%m-%d %H:%M:%S"),
-         # Label the dataset for reference
          dataset = "shah2019",
-         # Set type to 0 as placeholder (e.g., non-diabetic or unspecified)
-         type = 0,
-         # Set insulin modality to NA as we don't have this information
-         insulinModality = NA,
-         # Set the device type to "Dexcom G6" for all subjects
-         device = "Dexcom G6") %>%
-  # Generate unique pseudo IDs for each participant by adding 9000 to group IDs
+         type = 0,  # Set "type" to indicate non-diabetic
+         insulinModality = NA,  # Set insulin modality to NA as we don't have this information
+         device = "Dexcom G6") %>% # Set the device type to "Dexcom G6" for all subjects according to study design
   group_by(id) %>%
-  mutate(pseudoID = cur_group_id() + 9000) %>%
-  # Ungroup the dataset after creating pseudoID
+  mutate(pseudoID = cur_group_id() + 9000) %>% # Generate unique pseudo IDs for each participant by adding 9000 to group IDs
   ungroup() %>%
-  # Select the final columns for the output dataset with renamed IDs and relevant fields
   select(id = pseudoID, time, gl, age, sex, insulinModality, type, device, dataset)
 
-# Save the final dataset to a CSV file
 write.csv(T1DE_combined, file = "csv_data/shah2019.csv", row.names = FALSE)
