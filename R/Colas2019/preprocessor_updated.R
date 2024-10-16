@@ -1,6 +1,6 @@
 # This is the script for processing Colas2019 data into the common format. 
-# Author: Elizabeth Chun, Neo Kok
-# Date: 9/22/24
+# Author: Elizabeth Chun
+# Date: 1/30/23, edited 10/7/24 by Neo Kok
 
 library(tidyverse)
 library(hms)
@@ -93,6 +93,4 @@ df_final = df_merged %>% mutate(time = ifelse(nchar(time) == 10, paste0(time, " 
                                dataset = "colas2019") %>% select (-T2DM)
   
 
-write.csv(df_final, "../colas2019.csv")
-
-
+write.csv(df_final, "../csv_data/colas2019.csv", row.names = FALSE)

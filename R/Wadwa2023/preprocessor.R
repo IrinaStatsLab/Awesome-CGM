@@ -1,3 +1,7 @@
+# This is the script for processing Wadwa2023 data into the common format. 
+# Author: Samuel Tan, Neo Kok
+# Date: 10/7/2024
+
 library(tidyverse)
 library(lubridate)
 
@@ -38,4 +42,4 @@ final_data <- merged_data %>%
   ) %>%
   select(id, time, gl, age, sex, insulinModality, type, device, dataset)
 
-write_csv(final_data, "wadwa2023.csv")
+write_csv(final_data, "csv_data/wadwa2023.csv")

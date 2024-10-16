@@ -1,14 +1,14 @@
 # This is the script for processing Buckingham CGMS data into the updated format. 
-# Author: Rucha Bhat, Shaun Cass, edited by Charlotte Xu
-# Date: September 30, 2024
+# Author: Rucha Bhat, Shaun Cass, edited by Charlotte Xu and Neo Kok
+# Date: October 8, 2024
 
 library(tidyverse)
 library(magrittr)
 
 # The dataset is downloaded as a folder containing multiple data tables and forms.
 # First, download the entire dataset. Do not rename the downloaded folder.
-# Place the downloaded folder into your created folder, named as preferred (here named "Buckingham2007").
-dataset <- "Pre-Processing/Buckingham2007"
+# Place the downloaded folder into your created folder, named as preferred (here named "DataTables").
+dataset <- "DataTables"
 
 # Set the working directory to the folder created for the dataset.
 # Uncomment and run the following line if needed.
@@ -20,7 +20,7 @@ dataset <- "Pre-Processing/Buckingham2007"
 
 # Reading the raw CGM data from a CSV file into 'curr'.
 library(readr)
-curr <- read_csv("Pre-Processing/Buckingham2007/tblFNavGlucose.csv")
+curr <- read_csv("DataTables/tblFNavGlucose.csv")
 
 # Combine the date and time columns into a single 'time' column using POSIX1t format (standard time format in R).
 curr$time = strptime(paste(as.Date(curr$NavReadDt), curr$NavReadTm), 
@@ -59,10 +59,10 @@ curr = curr %>% group_split(id) %>% map_dfr(zero.remove)
 # >>>> Adding additional variables
 
 # Load the enrollment data which includes gender and other patient details.
-Screening <- read_csv("Pre-Processing/Buckingham2007/tblFEnrollment.csv")
+Screening <- read_csv("DataTables/tblFEnrollment.csv")
 
 # Load the patient roster data to retrieve insulin modality and age at baseline.
-Patient <- read_csv("Pre-Processing/Buckingham2007/tblFPtRoster.csv")
+Patient <- read_csv("DataTables/tblFPtRoster.csv")
 
 # Filter patients who have 'Completed' status and summarize their insulin modality
 # (1 for pump users, 0 for others) and age at baseline.
@@ -92,4 +92,4 @@ Output <- Output %>%
   select(id, time, gl, age, sex, insulinModality, type, device, dataset)
 
 # Write the final cleaned and processed dataset to a CSV file for further analysis.
-write.csv(Output, file = "csv_data/Buckingham2007.csv", row.names = FALSE)
+write.csv(Output, file = "csv_data/buckingham2007.csv", row.names = FALSE)

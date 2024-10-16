@@ -1,6 +1,6 @@
 # This is the script for processing Lynch2019 data into the common format. 
 # Author: Neo Kok
-# Date: 9/22/24
+# Date: 10/7/2024
 
 library(tidyverse)
 library(haven)
@@ -10,7 +10,6 @@ data <- read_sas("iobp2devicecgm.sas7bdat")
 demo <- read_sas("iobp2diabscreening.sas7bdat")
 age <- read_sas("iobp2ptroster.sas7bdat")
 
-surgery <- read_sas(".sas7bdat")
 
 # Select only necessary variables
 data = data %>% select(PtID, DeviceDtTm, Value)
@@ -37,5 +36,4 @@ df_final = data %>%
          # Set insulin modality to 0 for insulin injections, 1 for insulin pump
          insulinModality = ifelse(is.na(insulinModality), 0, 1))
 
-#write.csv(df_final, "lynch2022.csv")
-
+write.csv(df_final, "csv_data/lynch2022.csv", row.names = FALSE)

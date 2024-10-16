@@ -1,12 +1,15 @@
 # This script processes the "Broll2021" dataset into a common format.
 # Author: Charlotte Xu
-# Date: 10/2/24
+# Date: 10/2/24, edited 10/8/24 by Neo Kok
 
 # Load the necessary library
 library(dplyr)
 
 # Read your data - assuming it's a CSV file for example
-df2 <- read.csv("Broll2021.csv")
+#df2 <- read.csv("Broll2021.csv")
+
+# Data can be accessed using CRAN iglu package
+df2 <- iglu::example_data_5_subject
 
 # Transform the 'id' column
 df2 <- df2 %>%
@@ -25,4 +28,4 @@ df2 <- df2 %>%
   select(id, time, gl, age, sex, insulinModality, type, device, dataset)
 
 # Save the processed dataset to a CSV file in the 'csv_data' folder
-write.csv(df2, file = "csv_data/Broll2021.csv", row.names = FALSE)
+write.csv(df2, file = "csv_data/broll2021.csv", row.names = FALSE)

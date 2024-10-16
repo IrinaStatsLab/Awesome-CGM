@@ -1,6 +1,6 @@
 # This is the script for processing Shah 2019 data into the common format. 
 # Author: Charlotte Xu
-# Date: Sep.30 
+# Date: 9/30/24, edited by Neo Kok 10/8/24
 
 # Load the necessary library
 library(dplyr)
@@ -8,9 +8,9 @@ library(tidyverse)
 library(haven)
 library(readr)
 
-T1DE_CGM <- read_csv("Pre-Processing/Shah2019/NonDiabDeviceCGM.csv") # CGM_reading: PtID = T1DE$id, DeviceTm = T1DE$time, Value = T1DE$gl
-T1DE_screening <- read_csv("Pre-Processing/Shah2019/NonDiabScreening.csv") # PtID = T1DE$id,  Gender = NDChild$sex
-T1DE_Patient<- read_csv("Pre-Processing/Shah2019/NonDiabPtRoster.csv") #AgeAsOfEnrollDt = T1DE$age
+T1DE_CGM <- read_csv("CGMND-af920dee-2d6e-4436-bc89-7a7b51239837/NonDiabDeviceCGM.csv") # CGM_reading: PtID = T1DE$id, DeviceTm = T1DE$time, Value = T1DE$gl
+T1DE_screening <- read_csv("CGMND-af920dee-2d6e-4436-bc89-7a7b51239837/NonDiabScreening.csv") # PtID = T1DE$id,  Gender = NDChild$sex
+T1DE_Patient<- read_csv("CGMND-af920dee-2d6e-4436-bc89-7a7b51239837/NonDiabPtRoster.csv") #AgeAsOfEnrollDt = T1DE$age
 
 # Merging acquired variable information
 T1DE <- T1DE_CGM %>%
@@ -48,4 +48,4 @@ T1DE_combined <- T1DE %>%
   select(id = pseudoID, time, gl, age, sex, insulinModality, type, device, dataset)
 
 # Save the final dataset to a CSV file
-write.csv(T1DE_combined, file = "csv_data/Shah2019.csv", row.names = FALSE)
+write.csv(T1DE_combined, file = "csv_data/shah2019.csv", row.names = FALSE)
