@@ -114,14 +114,14 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 The Awesome-CGM public datasets have been updated with processing scripts designed for advanced integrative validation. These datasets serve as standardized test cases for software evaluation. The following datasets have been integrated with additional patient-level statistics such as 'Sex', 'Insulin Modality', 'Diabetes Type', and 'Device Used' from each raw data source:
 
-- **Colas2019** (Healthy: n=191, Type 2 Diabetic: n=17)
-- **Broll** (Type 2 Diabetic: n=5)
-- **Hall2018** (Healthy: n=38, Pre-Diabetic: n=14, Type 2 Diabetic: n=5)
-- **Shah2019** (Healthy: n=169)
-- **Buckingham2007** (Type 1 Diabetic: n=47)
-- **Lynch2022** (Type 1 Diabetic: n=440)
-- **O'Malley2021** (Type 1 Diabetic: n=168)
-- **Wadwa2023** (Type 1 Diabetic: n=102)
+- **[Colas2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Colas-(2019))** (Healthy: n=191, Type 2 Diabetic: n=17)
+- **[Broll2021](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Broll-(2021))** (Type 2 Diabetic: n=5)
+- **[Hall2018](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Hall-(2018))** (Healthy: n=38, Pre-Diabetic: n=14, Type 2 Diabetic: n=5)
+- **[Shah2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Shah-(2019))** (Healthy: n=169)
+- **[Buckingham2007](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Buckingham-(2007))** (Type 1 Diabetic: n=47)
+- **[Lynch2022](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Lynch-(2022))** (Type 1 Diabetic: n=440)
+- **[O'Malley2021](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/O'Malley-(2021))** (Type 1 Diabetic: n=168)
+- **[Wadwa2023](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Wadwa-(2023))** (Type 1 Diabetic: n=102)
 
 Each subject is uniquely identified using a pseudo-ordered ID format, with the first digit representing the dataset (e.g., the first subject in the updated Colas2019 dataset is assigned ID 3001, and in the Lynch2022 dataset, ID 1401).
 
