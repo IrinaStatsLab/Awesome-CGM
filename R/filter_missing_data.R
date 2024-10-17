@@ -1,3 +1,7 @@
+# This is the script for checking and dropping data entries under minimal exclusion criteria
+# Author: Neo Kok
+# Date: 10/7/2024
+
 # Load necessary libraries
 library(readr)
 library(dplyr)
