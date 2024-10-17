@@ -109,3 +109,37 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * The AIDA simulator is intended for simulating the effects on the blood glucose profile of changes in insulin and diet for a typical insulin-dependent (type 1) diabetic patient. 
   * Found by David Buchanan
 
+
+ ## Validation Dataset and additional processing
+
+The Awesome-CGM public datasets have been updated with processing scripts designed for advanced integrative validation. These datasets serve as standardized test cases for software evaluation. The following datasets have been integrated with additional patient-level statistics such as 'Sex', 'Insulin Modality', 'Diabetes Type', and 'Device Used' from each raw data source:
+
+- **Colas2019** (Healthy: n=191, Type 2 Diabetic: n=17)
+- **Broll** (Type 2 Diabetic: n=5)
+- **Hall2018** (Healthy: n=38, Pre-Diabetic: n=14, Type 2 Diabetic: n=5)
+- **Shah2019** (Healthy: n=169)
+- **Buckingham2007** (Type 1 Diabetic: n=47)
+- **Lynch2022** (Type 1 Diabetic: n=440)
+- **O'Malley2021** (Type 1 Diabetic: n=168)
+- **Wadwa2023** (Type 1 Diabetic: n=102)
+
+Each subject is uniquely identified using a pseudo-ordered ID format, with the first digit representing the dataset (e.g., the first subject in the updated Colas2019 dataset is assigned ID 3001, and in the Lynch2022 dataset, ID 1401).
+
+This combined dataset encompasses a population of:
+- **Type 1 Diabetic**: n=820
+- **Type 2 Diabetic**: n=27
+- **Pre-Diabetic**: n=14
+- **Healthy**: n=398
+
+The dataset has an average study duration of 18 weeks, with a mean age of 32 years. Approximately 74% of the cohort used an insulin pump rather than injections during their study period.
+
+### Data Quality Checks
+
+Minimal exclusion criteria have been implemented for users performing data quality checks. A missing data/cleaning check [R script](https://github.com/IrinaStatsLab/Awesome-CGM/blob/master/R/filter_missing_data.R) is provided with the following inclusion criteria:
+- 90% non-missing data for 1-day records
+- 70% non-missing data for records spanning 2–14 days
+- 70% non-missing data for records covering periods from 14 days to 3 months
+
+An optional visual quality check [R script](https://github.com/IrinaStatsLab/Awesome-CGM/blob/master/R/plot_check_csv.R) is also available, using the `plot_glu()` function from the iglu R package ([GitHub link](https://github.com/charlotte1031/iglu)).
+
+A code reproduction demo can be followed using this README file: [Processing Demo](https://github.com/IrinaStatsLab/Awesome-CGM/blob/master/R/Processing_Demo.md).
