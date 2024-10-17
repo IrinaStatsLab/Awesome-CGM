@@ -5,10 +5,9 @@
 library(tidyverse)
 library(lubridate)
 
+# Part A. Read in Raw Dataset and merge if multiple sheets/files
 cgmData <- read.table("PEDAPDexcomClarityCGM.txt", sep = "|", header = TRUE)
-
 demoData <- read.table("PEDAPDiabScreening.txt", sep = "|", header = TRUE)
-
 ageData <- read.table("PtRoster.txt", sep = "|", header = TRUE)
 
 merged_data <- cgmData %>%
@@ -16,6 +15,8 @@ merged_data <- cgmData %>%
 
 merged_data <- merged_data %>%
   left_join(ageData, by = "PtID")
+
+# Part B. Processing for Validation Dataset Feature and Quality
 
 # Define a function to add a midnight missingness in timestamp record
 # This function checks if the entry missing a time, and if so, adds "12:00:00 AM" as the Midnight Gap
