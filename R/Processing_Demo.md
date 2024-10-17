@@ -16,7 +16,7 @@ To guide users through downloading the dataset from the original source, process
    - Execute either `processing.R` or `processing_updated.R` to process the raw data.
    - Ensure that a subfolder named `csv` exists under the folder where the script is being executed. If not, create one manually.
 
-4. **Run the Quality Check Script**
+4. **(Optional) Run the Quality Check Script**
    - After processing the targeted datasets, run the script `filter_missing_data.R` to filter out low-quality data.
    - This script drops data based on minimal exclusion criteria (e.g., high levels of missing or sparse data).
 
