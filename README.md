@@ -78,7 +78,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   
 ### Type 2
 * [Broll (2021)](https://github.com/Charlotte1031/Awesome-CGM/wiki/Broll-(2021))
-   * The study involved Type 2 diabetic individuals using the Dexcom G4 CGM. Data from 5 subjects is provided as an example dataset for the development of the ‘iglu’ package (https://github.com/irinagain/iglu). 
+   * The study involved Type 2 diabetic individuals using the Dexcom G4 CGM. Data from 5 subjects is provided as an example dataset for the development of the [‘iglu’ package](https://github.com/irinagain/iglu). 
   * Found by Irina Gaynanova. Uploaded by Charlotte Xu.
   
 ### Other
