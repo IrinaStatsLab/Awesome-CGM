@@ -1,3 +1,7 @@
+# This is the script generating plot_glu() pdf for each subjects in each dataset for quality check purpose
+# Author: Charlotte Xu
+# Date: 10/11/2024
+
 # Load necessary libraries
 library(readr)
 library(dplyr)
