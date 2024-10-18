@@ -2,7 +2,8 @@
 # Author: Charlotte Xu
 # Date: 9/30/24, edited by Neo Kok 10/8/24
 
-# Load the necessary library
+# Part A. Read in Raw Dataset and additional covariates and merge if multiple sheets/files
+
 library(dplyr)
 library(tidyverse)
 library(haven)
@@ -16,6 +17,8 @@ T1DE_Patient<- read_csv("CGMND-af920dee-2d6e-4436-bc89-7a7b51239837/NonDiabPtRos
 T1DE <- T1DE_CGM %>%
   left_join(T1DE_screening, by = "PtID") %>%  # PtID corresponds to "id"
   left_join(T1DE_Patient, by = "PtID")        # joining by PtID and id
+
+# Part B. Processing for Validation Dataset Feature and Quality
 
 # To blind the exact study start date, we mask the outputs by only using the n-th dates. 
 # For this purpose, we generate pseudo start dates, starting from January 1, 2017.
@@ -38,4 +41,5 @@ T1DE_combined <- T1DE %>%
   ungroup() %>%
   select(id = pseudoID, time, gl, age, sex, insulinModality, type, device, dataset)
 
+# Save the processed dataset to a CSV file in the 'csv_data' folder
 write.csv(T1DE_combined, file = "csv_data/shah2019.csv", row.names = FALSE)
