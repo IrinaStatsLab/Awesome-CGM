@@ -2,14 +2,14 @@
 # Author: Charlotte Xu
 # Date: 10/2/24, edited 10/8/24 by Neo Kok
 
-# Load the necessary library
+# Part A. Read in Raw Dataset and additional covariates and merge if multiple sheets/files
+
 library(dplyr)
-
-# Read your data - assuming it's a CSV file for example
 #df2 <- read.csv("Broll2021.csv")
-
 # Data can be accessed using CRAN iglu package
 df2 <- iglu::example_data_5_subject
+
+# Part B. Processing for Validation Dataset Feature and Quality
 
 # Transform the 'id' column
 df2 <- df2 %>%
