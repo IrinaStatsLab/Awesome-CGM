@@ -1,4 +1,4 @@
-# Walk-through: Downloading, Processing, and Quality Check of CGM Datasets
+# Demo: Downloading, Processing, and Quality Check of CGM Datasets
 
 ## Goal:
 To guide users through downloading the dataset from the original source, processing it, and performing a quality check.
