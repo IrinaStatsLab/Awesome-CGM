@@ -1,7 +1,8 @@
-# This is the script for processing Buckingham CGMS data into the updated format. 
+# This is the script for processing Buckingham CGMS data into the validation dataset format. 
 # Author: Rucha Bhat, Shaun Cass, edited by Charlotte Xu and Neo Kok
 # Date: October 8, 2024
 
+# Original Processing steps - v1.1.0
 library(tidyverse)
 library(magrittr)
 
@@ -56,13 +57,15 @@ zero.remove = function(tab) {
 # Apply the zero variability removal function to each patient's data group, and combine the results.
 curr = curr %>% group_split(id) %>% map_dfr(zero.remove)
 
-# >>>> Adding additional variables
+# New Processing steps - updated October 2024
 
-# Load the enrollment data which includes gender and other patient details.
-Screening <- read_csv("DataTables/tblFEnrollment.csv")
+# Part A. Read in Raw Dataset and additional covariates and merge if multiple sheets/files
 
-# Load the patient roster data to retrieve insulin modality and age at baseline.
-Patient <- read_csv("DataTables/tblFPtRoster.csv")
+Screening <- read_csv("DataTables/tblFEnrollment.csv") # Load the enrollment data which includes gender and other patient details.
+
+Patient <- read_csv("DataTables/tblFPtRoster.csv") # Load the patient roster data to retrieve insulin modality and age at baseline.
+
+# Part B. Processing for Validation Dataset Feature and Quality
 
 # Filter patients who have 'Completed' status and summarize their insulin modality
 # (1 for pump users, 0 for others) and age at baseline.
