@@ -2,6 +2,8 @@
 # Author: Samuel Tan
 # Date: 10/10/2024
 
+# Part A. Read in Raw Dataset and additional covariates and merge if multiple sheets/files
+
 library(tidyverse)
 library(haven)
 library(lubridate)
@@ -13,6 +15,7 @@ screeningData <- read.table("DiabScreening_a.txt", sep = "|", header = TRUE, fil
 merged_data <- cgmData %>%
   left_join(screeningData, by = "PtID")
 
+# Part B. Processing for Validation Dataset Feature and Quality
 
 # Create a final dataset with new variables and selected columns
 final_data <- merged_data %>%
@@ -29,6 +32,7 @@ final_data <- merged_data %>%
    ) %>%
   select(id, time, gl, age, sex, insulinModality, type, device, dataset)
 
+# Save the processed dataset to a CSV file in the 'csv_data' folder
 final_data %>% write_csv("csv_data/o_mally2021.csv")
 
 
