@@ -64,19 +64,18 @@ for (i in 1:nfiles){
               append = T, sep = ",")
 }
 
+# Updated Processing script - October 2024 - v 1.2.0
 
-# Read in data
+# Part A. Read in Raw Dataset and additional covariates and merge if multiple sheets/files
+
 data <- read.csv("Colas2019_processed.csv")
 demo <- read.table("clinical_data.txt", sep = "", header = TRUE) %>% select(age, sex = gender, T2DM)
-
-# Add id based on column row
 demo = rowid_to_column(demo, "id")
-
-# Merge data
 df_merged = left_join(data, demo, by = "id")
 
 
-# Finalize data
+# Part B. Processing for Validation Dataset Feature and Quality
+
 df_final = df_merged %>% mutate(time = ifelse(nchar(time) == 10, paste0(time, " 00:00:00"), time), # adds hms to entries without it
                                 time = as.POSIXct(time, format = "%Y-%m-%d %H:%M:%S"), # Ensure correct time format
                                # Increase ids by 1000 to keep separate from other datasets
@@ -85,12 +84,12 @@ df_final = df_merged %>% mutate(time = ifelse(nchar(time) == 10, paste0(time, " 
                                sex = ifelse(sex == 0, "M", "F"),
                                # Set insulin modality to NA as we don't have that information, set as numeric to keep consistent with other datasets
                                insulinModality = as.numeric(NA),
-                               # Set type to 0 if not diabetic and 2 if T2d
+                               # Set type to 0 if healthy and 2 if T2d
                                type = ifelse(T2DM, 2, 0),
-                               # Set device type to Medtronic iPro for all subjects
+                               # Set device type to Medtronic iPro 
                                device = "Medtronic iPro",
                                # Set dataset type to be Lynch2022 for future reference when combined
                                dataset = "colas2019") %>% select (-T2DM)
   
-
+# Save the processed dataset to a CSV file in the 'csv_data' folder
 write.csv(df_final, "../csv_data/colas2019.csv", row.names = FALSE)
