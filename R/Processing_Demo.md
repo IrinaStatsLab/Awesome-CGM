@@ -1,7 +1,11 @@
 # Demo: Downloading, Processing, and Quality Check of CGM Datasets
 
 ## Goal:
-To guide users through downloading the dataset from the original source, processing it, and performing a quality check.
+1. Download file(s) from the source
+2. Identify and isolate CGM and demographic variables
+3. Format variables for consistency and uniformity
+4. Adjust IDs to ensure uniqueness across datasets
+5. Filter out profiles with excessive missing data
 
 ### Steps:
 
