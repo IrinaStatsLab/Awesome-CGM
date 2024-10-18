@@ -23,11 +23,17 @@ df$gl = as.numeric(as.character(df$gl))
 # Reformat the time to standard
 df$"time" = as.POSIXct(df$time, format="%Y-%m-%d %H:%M:%S") 
 
+# New Processing steps - updated October 2024
+
+# Part A. Read in Raw Dataset and additional covariates and merge if multiple sheets/files
+# Provided by original coding part
+
+# Part B. Processing for Validation Dataset Feature and Quality
+
 # Use example_data_hall from iglu package to identify diabetic type for profiles
 df_combined = left_join(df, (iglu::example_data_hall %>% select(id, diagnosis) %>% distinct()), by = c('id')) %>%
   mutate(diagnosis = case_when(is.na(diagnosis) ~ 0, diagnosis == "diabetic" ~ 2, diagnosis == "pre-diabetic" ~ 0.5))
 
-# Transform the 'id' column and add new variables
 df_final <- df_combined %>%
   # Convert the 'id' column into numeric by assigning unique sequential numbers to each unique 'id'
   # Add 8000 to each 'id' to ensure distinctiveness across datasets when combined
