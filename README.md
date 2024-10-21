@@ -9,7 +9,7 @@ This collection follows the style of Mike Love's [awesome-multi-omics](https://g
 
 ## Citation and contributions
 
-The new list was updated in October 2024 and assembled by Charlotte Xu, Neo Kok, and Samuel Tan, under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
+The new list was updated in October 2024 and assembled by Charlotte Xu, Neo Kok, and Junyan (Samuel) Tan, under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
 
 To cite current version 1.2.0, use
 
@@ -50,7 +50,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Lynch (2022)](https://github.com/irinagain/Awesome-CGM/wiki/Lynch-(2022))
   * The study aims to evaluate the transition of Type 1 diabetes management from a hybrid closed-loop system using an insulin pump and CGM to a biotic pancreas. The Dexcom G6 CGM was used across a population group aged between 6 and 71 years over a 13-week period, with a sample size of 90 participants.
-  * Found by Charlotte Xu. Updated R processor by  Neo Kok. Uploaded by Samuel Tan.
+  * Found by Charlotte Xu. Updated R processor by  Neo Kok. Uploaded by Junyan (Samuel) Tan.
 
 * [Marling (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Marling-(2019))
   * This study has 12 type 1 diabetes patients. 
@@ -58,7 +58,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [O’Mally (2021)](https://github.com/irinagain/Awesome-CGM/wiki/OMalley-(2021))
   * This study examined the use of the Dexcom G6 CGM and t:Slim X2 with Control-IQ Technology among children and adults (ages 14+). The study duration was 6 months with a sample size of 168 participants.
-  * Found by Samuel Tan. Updated R processor by Samuel Tan. Uploaded by Samuel Tan.
+  * Found by Junyan (Samuel) Tan. Updated R processor by Junyan (Samuel) Tan. Uploaded by Junyan (Samuel) Tan.
 
 * [Tamborlane (2008)](https://github.com/irinagain/Awesome-CGM/wiki/Tamborlane-(2008))
   * This study was designed to test CGM as a technology to assist in diabetes care. The randomized trial was intended to determine if CGM usage had a positive effect on diabetes management. The total subjects were split into two cohorts based on A1c results, with one cohort having initial A1c measurements from 7-10% and the second cohort of those with A1c levels <7%. Within each cohort, subjects were randomly assigned to a test (CGM) or control group.
@@ -70,7 +70,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Wadwa (2023)](https://github.com/irinagain/Awesome-CGM/wiki/Wadwa-(2023))
   * The purpose of this study was to improve glycemic outcomes in young children (ages 2-6) with Type 1 diabetes using the t:slim X2 insulin pump with Control-IQ Technology and Dexcom G6 CGM. The study spanned 13 weeks with a total sample size of 102 participants.
-  * Found by Charlotte Xu. Updated R processor by Samuel Tan. Uploaded by Samuel Tan.
+  * Found by Charlotte Xu. Updated R processor by Junyan (Samuel) Tan. Uploaded by Junyan (Samuel) Tan.
 
 * [Weinstock (2016)](https://github.com/irinagain/Awesome-CGM/wiki/Weinstock-(2016))
   * The purpose of this study was to identify factors associated with severe hypoglycemia in older adults (60+) with type 1 diabetes. The total sample size was 200 participants: 100 cases, 100 control. The Dexcom SEVEN PLUS was used to continuously monitor glucose levels for a span of 2 weeks.
