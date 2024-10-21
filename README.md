@@ -9,7 +9,7 @@ This collection follows the style of Mike Love's [awesome-multi-omics](https://g
 
 ## Citation and contributions
 
-The new list was updated in October 2024 and assembled by Charlotte Xu, Neo Kok, and Junyan (Samuel) Tan, under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
+The new list was updated in October 2024 and assembled by Xinran(Charlotte) Xu, Neo Kok, and Junyan (Samuel) Tan, under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
 
 To cite current version 1.2.0, use
 
