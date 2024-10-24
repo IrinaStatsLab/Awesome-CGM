@@ -87,7 +87,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * Found by Elizabeth Chun. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun. Updated Processor by Neo Kok.
 
 * [Hall (2018)](https://github.com/irinagain/Awesome-CGM/wiki/Hall-(2018))
-  * This study analyzes how blood glucose fluctuates in healthy individuals by using a CGM to monitor glucose. Standardized meals (breakfast only) were given to a subset of patients in order to monitor the effect of meals on the glucose readings of healthy individuals. The subjects in this study had no prior diabetes diagnosis.
+  * This study analyzes how blood glucose fluctuates in healthy individuals by using a CGM to monitor glucose. Standardized meals (breakfast only) were given to a subset of patients in order to monitor the effect of meals on the glucose readings of healthy individuals. The 57 subjects in this study had no prior diabetes diagnosis but 5 were diagnosed with Type 2 on study screening and a further 14 with pre-diabetes.
   * Found by Elizabeth Chun. CGM Processor by David Buchanan, Sangaman Senthil, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
   
 * [Åm (2018)](https://github.com/irinagain/Awesome-CGM/wiki/%C3%85m-(2018))
