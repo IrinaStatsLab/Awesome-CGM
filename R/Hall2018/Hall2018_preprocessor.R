@@ -6,7 +6,7 @@
 library(tidyverse)
 
 # First, download the entire dataset. Do not rename the downloaded file
-# Data folder is named "pbio.2005143.s010"
+# Data folder is named "pbio.2005143.s010" # S1 Data from the study
 
 filename <- "pbio.2005143.s010" 
 # If for some reason the filename has changed, simply set filename <- "newname"
@@ -25,6 +25,23 @@ df$gl = as.numeric(as.character(df$gl))
 
 # Reformat the time to standard
 df$"time" = as.POSIXct(df$time, format="%Y-%m-%d %H:%M:%S") 
+
+# Load additional covariates from SQLite database
+dbfile <- 'pbio.2005143.s014.db' # S5 Data from the study
+con <- dbConnect(RSQLite::SQLite(), dbfile)
+
+# Query the 'clinical' table and load additional covariate data
+raw_covs <- dbGetQuery(con, "SELECT * FROM clinical")
+
+# Close the database connection
+dbDisconnect(con)
+
+# Merge additional covariates if they exist
+if("Age" %in% colnames(raw_covs)) {
+  df <- df %>%
+    left_join(raw_covs %>% select(id = userID, Age), by = "id")
+}
+
 
 # Use example_data_hall from iglu package to identify diabetic type for profiles
 df_combined = left_join(df, (iglu::example_data_hall %>% select(id, diagnosis) %>% distinct()), by = c('id')) %>%
