@@ -44,11 +44,6 @@ if("Age" %in% colnames(raw_covs)) {
     left_join(raw_covs %>% select(id = userID, Age, diagnosis), by = "id")
 }
 
-if("diagnosis" %in% colnames(raw_covs)){
-  df = df %>%
-    left_join(raw_covs)
-}
-
 # Transform the 'id' column and add new variables
 df_final <- df_combined %>%
   # Convert the 'id' column into numeric by assigning unique sequential numbers to each unique 'id'
