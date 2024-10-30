@@ -45,7 +45,7 @@ if("Age" %in% colnames(raw_covs)) {
 }
 
 # Transform the 'id' column and add new variables
-df_final <- df_combined %>%
+df_final <- df %>%
   # Convert the 'id' column into numeric by assigning unique sequential numbers to each unique 'id'
   mutate(id = as.numeric(factor(id, levels = unique(id))),
          # Specify the dataset name for future reference
