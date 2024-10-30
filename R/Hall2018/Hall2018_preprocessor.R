@@ -1,4 +1,4 @@
-# This is the script for processing Hall2018 data into the common format. 
+# This is the script for processing Hall2018 data into the common format.
 # Author: David Buchanan
 # Date: January 31st, 2020, edited June 14th, 2020 by Elizabeth Chun, edited October 2nd, 2024 by Charlotte Xu, edited October 24th by Neo Kok
 
@@ -8,14 +8,18 @@ library(tidyverse)
 # First, download the entire dataset. Do not rename the downloaded file
 # Data folder is named "pbio.2005143.s010" # S1 Data from the study
 
-filename <- "pbio.2005143.s010" 
+filename <- "pbio.2005143.s010"
 # If for some reason the filename has changed, simply set filename <- "newname"
+
+
+# Load additional covariates from SQLite database
+dbfile <- 'pbio.2005143.s014.db' # S5 Data from the study
 
 # Read the raw data in
 df = read.table(filename, header = TRUE, sep = "\t")
 
 # Reorder and trim the columns to follow format
-df = df[c(3,1,2)] 
+df = df[c(3,1,2)]
 
 # Renaming the columns the standard format names
 colnames(df) = c("id","time","gl")
@@ -24,28 +28,21 @@ colnames(df) = c("id","time","gl")
 df$gl = as.numeric(as.character(df$gl))
 
 # Reformat the time to standard
-df$"time" = as.POSIXct(df$time, format="%Y-%m-%d %H:%M:%S") 
+df$"time" = as.POSIXct(df$time, format="%Y-%m-%d %H:%M:%S")
 
-# Load additional covariates from SQLite database
-dbfile <- 'pbio.2005143.s014.db' # S5 Data from the study
-con <- dbConnect(RSQLite::SQLite(), dbfile)
+con <- DBI::dbConnect(RSQLite::SQLite(), dbfile)
 
 # Query the 'clinical' table and load additional covariate data
-raw_covs <- dbGetQuery(con, "SELECT * FROM clinical")
+raw_covs <- DBI::dbGetQuery(con, "SELECT * FROM clinical")
 
 # Close the database connection
-dbDisconnect(con)
+DBI::dbDisconnect(con)
 
 # Merge additional covariates if they exist
 if("Age" %in% colnames(raw_covs)) {
   df <- df %>%
-    left_join(raw_covs %>% select(id = userID, Age), by = "id")
+    left_join(raw_covs %>% select(id = userID, Age, diagnosis), by = "id")
 }
-
-
-# Use example_data_hall from iglu package to identify diabetic type for profiles
-df_combined = left_join(df, (iglu::example_data_hall %>% select(id, diagnosis) %>% distinct()), by = c('id')) %>%
-  mutate(diagnosis = case_when(is.na(diagnosis) ~ 0, diagnosis == "diabetic" ~ 2, diagnosis == "pre-diabetic" ~ 0.5))
 
 # Transform the 'id' column and add new variables
 df_final <- df_combined %>%
@@ -60,7 +57,7 @@ df_final <- df_combined %>%
          # Assign 'sex' as NA (assuming sex information is missing or unavailable)
          sex = NA,
          # Keep 'age' from the original data (it assumes 'Age' exists in the dataset)
-         age = NA,
+         age = Age,
          # Assign 'insulinModality' as NA (this could be added later if information is available)
          insulinModality = NA) %>%  group_by(id) %>%
   mutate(pseudoID = cur_group_id() + 8000) %>%
