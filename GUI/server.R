@@ -84,6 +84,7 @@ server <- function(input, output, session) {
   }
   
 
+  
   observeEvent(input$datasets, {
     selected_datasets <- input$datasets
     
@@ -92,8 +93,31 @@ server <- function(input, output, session) {
     } else {
       indication_messages <- sapply(selected_datasets, function(dataset) {
         paste("Dataset:", dataset, "-> Expected Files:", message_indication[[dataset]])
-      }) 
+      })
       
+    #   if (is.null(selected_datasets) || length(selected_datasets) == 0) {
+    #     output$datasetFileRequirements <- renderText("Please select one or more datasets.")
+    #   } else {
+    #     # Generate the HTML for each selected dataset
+    #     indication_messages <- lapply(selected_datasets, function(dataset) {
+    #       # Get the dataset's info
+    #       info <- message_indication[[dataset]]
+    #       # Create a formatted message
+    #       paste0(
+    #         "<b>Dataset:</b> ", info$name, "<br>",
+    #         "<b>Link:</b> <a href='", info$link, "' target='_blank'>", info$link, "</a><br>",
+    #         "<b>Path:</b> ", info$path, "<br>",
+    #         "<b>Description:</b> ", info$description, "<br><br>"
+    #       )
+    #     })
+    #     
+    #     # Render the combined HTML messages
+    #     output$datasetFileRequirements <- renderUI({
+    #       HTML(paste(indication_messages, collapse = ""))
+    #     })
+    #   }
+    # })
+  
       output$datasetFileRequirements <- renderText(paste(indication_messages, collapse = "\n"))
     }
   })
@@ -117,6 +141,8 @@ server <- function(input, output, session) {
       return()
     }
     
+    # Update status to indicate which dataset is currently processing
+    output$processStatus <- renderText(paste("Processing dataset:", dataset, "..."))
     
     # Track the processing status for multiple datasets
     status_messages <- c()
@@ -144,7 +170,17 @@ server <- function(input, output, session) {
       if (!dir.exists(exdir)) {
         dir.create(exdir, recursive = TRUE)
       }
-      unzip(zip, exdir = exdir)
+      
+      
+      if (basename(exdir)=='S1'){
+        unzip(zip, exdir = local_dir)
+        message(paste("Unzipped", zip, "to", local_dir))
+        
+      }
+      else {
+        unzip(zip, exdir = exdir)
+        message(paste("Unzipped", zip, "to", exdir))
+      }
     }, files_zipped, extract_path)
     
     # Run all downloaded scripts concurrently
@@ -154,9 +190,6 @@ server <- function(input, output, session) {
       setwd(local_dir)
       lapply(selected_datasets, function(dataset) {
         script_path <- file.path(local_dir, script_paths[[dataset]][1])
-        
-        # Update status to indicate which dataset is currently processing
-        output$processStatus <- renderText(paste("Processing dataset:", dataset, "..."))
         
         if (file.exists(script_path)) {
           source(script_path)
