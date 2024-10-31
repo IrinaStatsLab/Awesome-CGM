@@ -17,7 +17,7 @@ script_paths <- list(
 )
 
 # Define UI
-ui <- fluidPage(
+ui_main <- fluidPage(
   useShinyjs(),  # Initialize shinyjs
   
   titlePanel("Dataset Processor"),
@@ -56,7 +56,7 @@ ui <- fluidPage(
   )
 )
 # Define Server logic
-server <- function(input, output, session) {
+server_main <- function(input, output, session) {
   local_dir <- file.path("~/Desktop", "Colas2019")
   
   if (!dir.exists(local_dir)) {
