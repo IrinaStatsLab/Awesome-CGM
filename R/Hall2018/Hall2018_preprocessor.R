@@ -1,4 +1,4 @@
-# This is the script for processing Hall2018 data into the common format. 
+# This is the script for processing Hall2018 data into the common format.
 # Author: David Buchanan
 # Date: January 31st, 2020, edited June 14th, 2020 by Elizabeth Chun, edited October 2nd, 2024 by Charlotte Xu, edited October 24th by Neo Kok
 
@@ -8,7 +8,7 @@ library(tidyverse)
 # First, download the entire dataset. Do not rename the downloaded file
 # Data folder is named "pbio.2005143.s010" # S1 Data from the study
 
-filename <- "pbio.2005143.s010" 
+filename <- "pbio.2005143.s010"
 # If for some reason the filename has changed, simply set filename <- "newname"
 
 
@@ -19,7 +19,7 @@ dbfile <- 'pbio.2005143.s014.db' # S5 Data from the study
 df = read.table(filename, header = TRUE, sep = "\t")
 
 # Reorder and trim the columns to follow format
-df = df[c(3,1,2)] 
+df = df[c(3,1,2)]
 
 # Renaming the columns the standard format names
 colnames(df) = c("id","time","gl")
@@ -28,7 +28,7 @@ colnames(df) = c("id","time","gl")
 df$gl = as.numeric(as.character(df$gl))
 
 # Reformat the time to standard
-df$"time" = as.POSIXct(df$time, format="%Y-%m-%d %H:%M:%S") 
+df$"time" = as.POSIXct(df$time, format="%Y-%m-%d %H:%M:%S")
 
 con <- DBI::dbConnect(RSQLite::SQLite(), dbfile)
 
@@ -45,7 +45,7 @@ if("Age" %in% colnames(raw_covs)) {
 }
 
 # Transform the 'id' column and add new variables
-df_final <- df_combined %>%
+df_final <- df %>%
   # Convert the 'id' column into numeric by assigning unique sequential numbers to each unique 'id'
   mutate(id = as.numeric(factor(id, levels = unique(id))),
          # Specify the dataset name for future reference
