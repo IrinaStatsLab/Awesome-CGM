@@ -34,7 +34,7 @@ final_data <- merged_data %>%
     insulinModality = 1,
     type = 1,
     device = "Dexcom G6",
-    dataset = "o_mally2021"
+    dataset = "o_malley2021"
   ) %>%
   group_by(id) %>%
   # Generate unique pseudo IDs for each participant by adding 5000 to group IDs
@@ -50,5 +50,5 @@ if (!dir.exists("csv_data")) {
 }
 
 # Save the processed dataset to a CSV file in the 'csv_data' folder
-final_data %>% write.csv("csv_data/o_mally2021.csv", row.names = FALSE)
+final_data %>% write.csv("csv_data/o_malley2021.csv", row.names = FALSE)
 
