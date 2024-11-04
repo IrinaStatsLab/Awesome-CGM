@@ -1,4 +1,4 @@
-# This is the script for processing Buckingham CGMS data into the updated format. 
+# This is the script for processing Buckingham CGMS data into the updated format.
 # Author: Rucha Bhat, Shaun Cass, edited by Charlotte Xu and Neo Kok
 # Date: October 24, 2024
 
@@ -15,7 +15,7 @@ library(readr)
 curr <- read_csv("DirecNetNavigatorPilotStudy/DirecNetNavigatorPilotStudy/DataTables/tblFNavGlucose.csv")
 
 # Combine the date and time columns into a single 'time' column using POSIX1t format (standard time format in R).
-curr$time = strptime(paste(as.Date(curr$NavReadDt), curr$NavReadTm), 
+curr$time = strptime(paste(as.Date(curr$NavReadDt), curr$NavReadTm),
                      format = "%Y-%m-%d %H:%M:%S")
 
 # Select only the relevant columns (ID, time, glucose), and reorder them.
@@ -70,9 +70,9 @@ CGM_filtered <- curr %>% filter(id %in% Patient_filtered$PtID)
 
 # Prepare the final output, combining the CGM data and patient information.
 Output <- CGM_filtered %>%
-  mutate(time = as.POSIXct(time, format = "%Y-%m-%d %H:%M:%S")) %>% 
+  mutate(time = as.POSIXct(time, format = "%Y-%m-%d %H:%M:%S")) %>%
   select(id = id, time = time, gl = gl) %>%
-  mutate(device = 'FreeStyle Navigator', type = 1, dataset = "buckingham2007") %>%
+  mutate(device = 'FreeStyle Navigator', type = as.numeric(1), dataset = "buckingham2007") %>%
   # Merge with Patient_filtered to add insulinModality and age information.
   left_join(Patient_filtered %>% select(id = PtID, insulinModality = insulinModality, age = age), by = "id") %>%
   # Merge with Screening to add gender (sex) information.
@@ -81,7 +81,10 @@ Output <- CGM_filtered %>%
 # Update the IDs by adding 6000 to each id for uniqueness within this dataset.
 Output <- Output %>%
   group_by(id) %>%
-  mutate(pseudoID = cur_group_id() + 6000) %>%
+  mutate(
+    pseudoID = cur_group_id() + 6000,
+    insulinModality = as.numeric(insulinModality)
+  ) %>%
   # Ungroup the dataset after creating pseudoID
   ungroup() %>%
   select(id = pseudoID, time, gl, age, sex, insulinModality, type, device, dataset) # Reorder columns and select only the relevant ones for the output

@@ -44,6 +44,7 @@ if("Age" %in% colnames(raw_covs)) {
     left_join(raw_covs %>% select(id = userID, Age, diagnosis), by = "id")
 }
 
+
 # Transform the 'id' column and add new variables
 df_final <- df %>%
   # Convert the 'id' column into numeric by assigning unique sequential numbers to each unique 'id'
@@ -51,15 +52,20 @@ df_final <- df %>%
          # Specify the dataset name for future reference
          dataset = "hall2018",
          # Set 'type' to 0 (this could represent a particular subject type, such as non-diabetic)
-         type = diagnosis,
+         type = case_when(
+           diagnosis == 'diabetic' ~ 2,
+           diagnosis == 'pre-diabetic' ~ 0.5,
+           diagnosis == 'non-diabetic' ~ 0,
+           TRUE ~ NA_real_  # Set to NA if diagnosis is missing or unrecognized
+         ),
          # Specify the CGM device used in the study ("Dexcom G4" in this case)
          device = "Dexcom G4",
          # Assign 'sex' as NA (assuming sex information is missing or unavailable)
-         sex = NA,
+         sex = NA_character_,
          # Keep 'age' from the original data (it assumes 'Age' exists in the dataset)
-         age = Age,
+         age = as.numeric(Age),
          # Assign 'insulinModality' as NA (this could be added later if information is available)
-         insulinModality = NA) %>%  group_by(id) %>%
+         insulinModality = NA_integer_) %>%  group_by(id) %>%
   mutate(pseudoID = cur_group_id() + 8000) %>%
   # Ungroup the dataset after creating pseudoID
   ungroup() %>%
