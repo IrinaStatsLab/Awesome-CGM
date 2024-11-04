@@ -1,4 +1,4 @@
-# This is the script for processing Shah 2019 data into the common format. 
+# This is the script for processing Shah 2019 data into the common format.
 # Author: Charlotte Xu
 # Date: 9/30/24, edited by Neo Kok 10/24/24
 
@@ -22,7 +22,7 @@ T1DE <- T1DE_CGM %>%
   left_join(T1DE_screening, by = "PtID") %>%  # PtID corresponds to "id"
   left_join(T1DE_Patient, by = "PtID")        # joining by PtID and id
 
-# To blind the exact study start date, we mask the outputs by only using the n-th dates. 
+# To blind the exact study start date, we mask the outputs by only using the n-th dates.
 # For this purpose, we generate pseudo start dates, starting from January 1, 2017.
 pseudo_start_date <- as.Date("2017-01-01")
 
@@ -39,9 +39,9 @@ T1DE_combined <- T1DE %>%
          # Label the dataset for reference
          dataset = "shah2019",
          # Set type to 0 as placeholder (e.g., non-diabetic or unspecified)
-         type = 0,
+         type = as.numeric(0),
          # Set insulin modality to NA as we don't have this information
-         insulinModality = NA,
+         insulinModality = NA_integer_,
          # Set the device type to "Dexcom G6" for all subjects
          device = "Dexcom G6") %>%
   # Generate unique pseudo IDs for each participant by adding 9000 to group IDs

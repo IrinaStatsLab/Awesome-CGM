@@ -1,4 +1,4 @@
-# This is the script for processing Wadwa2023 data into the common format. 
+# This is the script for processing Wadwa2023 data into the common format.
 # Author: Samuel Tan, Neo Kok
 # Date: 10/24/2024
 
@@ -44,10 +44,10 @@ final_data <- merged_data %>%
     id = PtID,
     time = as.POSIXct(mdy_hms(DeviceDtTm), format = "%Y-%m-%d %H:%M:%S"),
     gl = as.numeric(CGM),
-    age = AgeAsofEnrollDt,
+    age = as.numeric(AgeAsofEnrollDt),
     sex = Sex,
-    insulinModality = 1,
-    type = 1,
+    insulinModality = as.numeric(1),
+    type = as.numeric(1),
     device = "Dexcom G6",
     dataset = "wadwa2023"
   ) %>%

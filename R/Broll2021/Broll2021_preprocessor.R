@@ -4,6 +4,7 @@
 
 # Load the necessary library
 library(tidyverse)
+library(readr)
 
 # Read your data - assuming it's a CSV file for example
 #df2 <- read_csv("Broll2021.csv")
@@ -17,11 +18,11 @@ df2 <- df2 %>%
   mutate(id = as.numeric(sub("Subject ", "", id)),
          # Add additional variables: specify the dataset, subject type, device used, and placeholder values
          dataset = "broll2021",  # Set dataset label
-         type = 2,  # Set subject type to 2 (e.g., for T2D)
+         type = as.numeric(2),  # Set subject type to 2 (e.g., for T2D)
          device = "Dexcom G4",  # Specify the device used for glucose measurement
-         sex = NA,  # Placeholder for sex (unknown or missing)
-         age = NA,  # Placeholder for age (unknown or missing)
-         insulinModality = NA) %>% # Placeholder for insulin modality (unknown or missing)
+         sex = NA_character_,  # Placeholder for sex (unknown or missing)
+         age = NA_integer_,  # Placeholder for age (unknown or missing)
+         insulinModality = NA_integer_) %>% # Placeholder for insulin modality (unknown or missing)
   group_by(id) %>%
   mutate(pseudoID = cur_group_id() + 7000) %>%
   # Ungroup the dataset after creating pseudoID

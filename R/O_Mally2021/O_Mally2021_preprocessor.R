@@ -31,8 +31,8 @@ final_data <- merged_data %>%
     gl = as.numeric(CGM),
     age = AgeAtEnrollment,
     sex = Gender,
-    insulinModality = 1,
-    type = 1,
+    insulinModality = as.numeric(1),
+    type = as.numeric(1),
     device = "Dexcom G6",
     dataset = "o_mally2021"
   ) %>%

@@ -1,4 +1,4 @@
-# This is the script for processing Lynch2019 data into the common format. 
+# This is the script for processing Lynch2019 data into the common format.
 # Author: Neo Kok
 # Date: 10/24/2024
 
@@ -30,13 +30,13 @@ df_final = data %>%
   mutate(# Ensure correct time format
          time = as.POSIXct(time, format = "%m/%d/%Y %I:%M:%S %p"),
          # Set diabetes type to type 1 for T1d
-         type = 1, 
+         type = as.numeric(1),
          # Set device type to Dexcom G6 for all subjects
          device = "Dexcom G6",
          # Set dataset type to be Lynch2022 for future reference when combined
          dataset = "lynch2022",
          # Set insulin modality to 0 for insulin injections, 1 for insulin pump
-         insulinModality = ifelse(is.na(insulinModality), 0, 1)) %>%
+         insulinModality = as.numeric(ifelse(is.na(insulinModality), 0, 1))) %>%
   group_by(id) %>%
   mutate(pseudoID = cur_group_id() + 1000) %>%
   # Ungroup the dataset after creating pseudoID
