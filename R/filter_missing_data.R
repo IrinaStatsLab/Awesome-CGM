@@ -72,6 +72,7 @@ process_dataset <- function(file_path) {
     left_join(total_entries_per_subject, by = "id")
 
   # Apply the inclusion criteria to each subject
+  if(file_path == "csv_data/buckingham2007.csv"){
   subject_metrics <- subject_metrics %>%
     mutate(inclusion = mapply(calculate_inclusion,
                               time_span_days,
@@ -79,6 +80,15 @@ process_dataset <- function(file_path) {
                               total_entries,
                               file_path),
            missingness_proportion = 1 - total_entries / (time_span_days * 144))
+  } else{
+    subject_metrics <- subject_metrics %>%
+      mutate(inclusion = mapply(calculate_inclusion,
+                                time_span_days,
+                                distinct_days_with_data,
+                                total_entries,
+                                file_path),
+             missingness_proportion = 1 - total_entries / (time_span_days * 288))
+  }
 
   # List the subjects that need to be excluded (inclusion = 0) and their missingness proportion
   exclusion_ids <- subject_metrics %>%
@@ -86,7 +96,7 @@ process_dataset <- function(file_path) {
     pull(id)
 
   # Filter out ids that have too high of missingness
-  filtered_data = data %>% filter(id %in% exclusion_ids)
+  filtered_data = data %>% filter(id %in% exclusion_ids) %>% select(-date)
 
   # Add "_filtered.csv" to the file path for final data
   new_file_path <- paste0(file_path_sans_ext(file_path), "_filtered.csv")
@@ -99,8 +109,8 @@ process_dataset <- function(file_path) {
 # Function to process all datasets in the 'csv_data' folder and save the results
 process_all_datasets <- function(folder_path, output_file, output_vector) {
   # Get the list of CSV files in the folder
-  file_list <- list.files(folder_path, pattern = "*.csv", full.names = TRUE)
-
+  file_list <- list.files(folder_path, pattern = ".*\\d+\\.csv$", full.names = TRUE)
+  
   # Loop through every dataset for processing
   for(file_path in file_list){
     print(paste("Processing file:", basename(file_path)))
@@ -108,5 +118,5 @@ process_all_datasets <- function(folder_path, output_file, output_vector) {
   }
 }
 
-# Run the function to process all datasets and save results to 'Exclusion_check.txt' and save removeable ids
+# Run the function to process all datasets and save results ending with "_filtered"
 process_all_datasets("csv_data")

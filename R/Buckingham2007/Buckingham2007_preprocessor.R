@@ -79,8 +79,11 @@ Output <- CGM_filtered %>%
   left_join(Screening %>% select(id = PtID, sex = Gender), by = "id")
 
 # Update the IDs by adding 6000 to each id for uniqueness within this dataset.
-Output <- Output %>%
+Output <- Output %>%  # Remove NA times and gl values
+  filter(!is.na(time), !is.na(gl)) %>%
   group_by(id) %>%
+  # Ensure that time is in order
+  arrange(time) %>%
   mutate(
     pseudoID = cur_group_id() + 6000,
     insulinModality = as.numeric(insulinModality)
