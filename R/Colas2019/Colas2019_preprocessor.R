@@ -82,7 +82,11 @@ df_final = df_merged %>% mutate(time = as.POSIXct(time, format = "%Y-%m-%d %H:%M
                                device = "Medtronic iPro",
                                # Set dataset type to be Lynch2022 for future reference when combined
                                dataset = "colas2019") %>%
+  # Remove NA times and gl values
+  filter(!is.na(time), !is.na(gl)) %>%
   group_by(id) %>%
+  # Ensure that time is in order
+  arrange(time) %>%
   mutate(pseudoID = cur_group_id() + 3000) %>%
   # Ungroup the dataset after creating pseudoID
   ungroup() %>%
