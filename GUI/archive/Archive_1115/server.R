@@ -30,31 +30,23 @@ message_indication <- list(
   Wadwa2023 = "PEDAP Public Dataset - Release 3 - 2024-09-25.zip"
 )
 
-options(shiny.maxRequestSize = 3 * 1024^3)  # 3GB
+options(shiny.maxRequestSize = 523 * 1024^2)
 
 # Define Server logic
 server <- function(input, output, session) {
 
-  # local_dir <- file.path(getwd(), 'Awesome-CGM_download')
-  temp_dir <- tempdir()
-  local_dir <- file.path(temp_dir, "Awesome-CGM_Download")
-
-  dir.create(local_dir, recursive = TRUE)
-
-
-  # Reactive value to store log messages
-  log_messages <- reactiveVal("")
-  append_to_log <- function(new_message) {
-    current_log <- log_messages()
-    log_messages(paste(current_log, new_message, sep = "\n"))
-  }
-  output$processLog <- renderPrint({
-    cat(log_messages())
+  messages <- reactiveVal("")
+  output$message_text <- renderPrint({
+    cat(messages())
   })
   observeEvent(input$clear_messages, {
     messages("")
   })
 
+  local_dir <- file.path(getwd(), 'Awesome-CGM_download')
+  # temp_dir <- tempdir()
+  # local_dir <- file.path(temp_dir, "Awesome-CGM_Download")
+  dir.create(local_dir, showWarnings = FALSE, recursive = TRUE)
 
   # Initialize shinyFiles settings to allow folder selection
   shinyDirChoose(input, "directory", roots = c(home = "~"), session = session)
@@ -64,6 +56,19 @@ server <- function(input, output, session) {
 
   # Define GitHub base URL for scripts
   base_url <- "https://raw.githubusercontent.com/IrinaStatsLab/Awesome-CGM/master/R"
+
+  # List of scripts by dataset name
+  script_paths <- list(
+    Broll2021 = c("Broll2021_preprocessor.R"),
+    Buckingham2007 = c("Buckingham2007_preprocessor.R"),
+    Colas2019 = c("Colas2019_preprocessor.R"),
+    Hall2018 = c("Hall2018_preprocessor.R"),
+    Lynch2022 = c("Lynch2022_preprocessor.R"),
+    O_Malley2021 = c("O_Malley2021_preprocessor.R"),
+    Shah2019 = c("Shah2019_preprocessor.R"),
+    Wadwa2023 = c("Wadwa2023_preprocessor.R")
+  )
+
   for (dataset in names(script_paths)) {
     script_name <- script_paths[[dataset]][1]
 
@@ -71,7 +76,9 @@ server <- function(input, output, session) {
     local_script_path <- file.path(local_dir, script_name)
     tryCatch({
       download.file(script_url, local_script_path, method = "curl")
-    }, error = function(e) {
+      messages(paste0(messages(), "Downloaded {script_name} for {dataset} successfully.\n"))
+       }, error = function(e) {
+      # messages(paste0(messages(), "Failed to download {script_name} for {dataset}: {e$message}\n"))
     })
   }
 
@@ -82,9 +89,9 @@ server <- function(input, output, session) {
       output$datasetFileRequirements <- renderText("Please select one or more datasets.")
     } else {
       indication_messages <- sapply(selected_datasets, function(dataset) {
-        paste("Dataset:", dataset, "-> Expected Files:", message_indication[[dataset]], "
-              \n")
+        paste("Dataset:", dataset, "-> Expected Files:", message_indication[[dataset]])
       })
+
       output$datasetFileRequirements <- renderText(paste(indication_messages, collapse = "\n"))
     }
   })
@@ -99,25 +106,18 @@ server <- function(input, output, session) {
     uploaded_files <- input$files
     selected_datasets <- input$datasets
 
-    if (length(selected_datasets) == 1 && selected_datasets == "Broll2021") {
-      output$processStatus <- renderText("Processing Broll2021: No files needed, just hit process.")
-    } else {
-      # Check for uploaded files
-      if (is.null(uploaded_files) || nrow(uploaded_files) == 0) {
-        append_to_log("Error: No files uploaded.")
-        return()
-      }
-    }
+    if (is.null(uploaded_files) || nrow(uploaded_files) == 0) {
+      # output$processStatus <- renderText("No files selected.")
+      messages(paste0(messages(), "No files selected.\n"))
 
-    if (is.null(selected_datasets) || length(selected_datasets) == 0) {
-      append_to_log("Error: No datasets uploaded.")
       return()
     }
+    if (is.null(selected_datasets) || length(selected_datasets) == 0) {
+      # output$processStatus <- renderText("No datasets selected.")
+      messages(paste0(messages(), "No datasets selected.\n"))
 
-    append_to_log(sprintf("Selected datasets: %s", paste(selected_datasets, collapse = ', ')))
-    Sys.sleep(1)  # Simulate
-    append_to_log("Processing uploaded files...")
-
+      return()
+    }
 
     files_zipped_name <- uploaded_files$name[grepl('*.zip$', uploaded_files$name, ignore.case=TRUE)]
     files_nonzip_name <- uploaded_files$name[!grepl('*.zip$', uploaded_files$name, ignore.case=TRUE)]
@@ -141,41 +141,43 @@ server <- function(input, output, session) {
       if (!dir.exists(exdir)) {
         dir.create(exdir, recursive = TRUE)
       }
-      if (basename(exdir)=='S1'){
-        append_to_log(sprintf("Unzipping file: %s", zip))
 
+      if (basename(exdir)=='S1'){
+        messages(paste0(messages(), "Unzipping...\n"))
         unzip(zip, exdir = local_dir)
+        # message(paste("Unzipped", zip, "to", local_dir))
+        messages(paste0(messages(), paste("Unzipped", zip, "to", local_dir,'\n')))
+
       }
       else {
-        append_to_log(sprintf("Unzipping file: %s", zip))
-
+        messages(paste0(messages(), "Unzipping...\n"))
         unzip(zip, exdir = exdir)
-        message(paste("Unzipped", zip, "to", exdir))
+        messages(paste0(messages(), paste("Unzipped", zip, "to", exdir,'\n')))
+
       }
     }, files_zipped, extract_path)
 
+    # Run all downloaded scripts concurrently
     tryCatch({
-      # Save the current working directory
-      setwd(local_dir)
       lapply(selected_datasets, function(dataset) {
         script_path <- file.path(local_dir, script_paths[[dataset]][1])
 
         if (file.exists(script_path)) {
-          append_to_log(sprintf("Running script for dataset: %s", dataset))
-
           source(script_path)
-          append_to_log(sprintf("Completed processing for dataset: %s", dataset))
+          messages(paste0(messages(), paste("Processing", dataset, "...\n")))
 
-        } else {
-          append_to_log(sprintf("Error: Script not found for dataset: %s", dataset))
         }
         if (input$applyMissingFilter && file.exists("filter_missing_data.R")) {
           source("filter_missing_data.R")
-          append_to_log(sprintf("Error: Script not found for dataset: %s", dataset))
+          messages(paste0(messages(), paste("Filtering Missingness for", dataset, "...\n")))
 
         }
-        append_to_log("Processing completed.")
+        # status_messages <<- c(status_messages, paste("Processed dataset:", dataset))
+
+        messages(paste0(messages(), paste("Finished Processed", dataset, "!\n")))
+
       })
+      # setwd(original_wd)
 
       # Enable appropriate download buttons
       if (input$applyMissingFilter) {
@@ -187,9 +189,12 @@ server <- function(input, output, session) {
       }
 
     }, error = function(e) {
-      append_to_log(sprintf("Error: %s", e$message))
+      # Restore the original working directory in case of an error
+      # setwd(original_wd)
 
-    })
+      # Display the error
+      messages(paste0(messages(), paste("Error processing datasets:", e$message , '\n\n')))
+   })
   })
 
 
@@ -200,15 +205,12 @@ output$downloadProcessedData <- downloadHandler(
   },
   content = function(file) {
     csv_data_dir <- file.path(local_dir, 'csv_data')
-    csv_files <- list.files(csv_data_dir, pattern = "*.csv$", full.names = FALSE)
-    zip::zip(zipfile = file, files = csv_files, root = csv_data_dir)
 
-    on.exit({
-      append_to_log("Cleaning Downloaded data...")
-      unlink(local_dir, recursive = TRUE)  # Delete all files in the directory
-      # log_messages("")  # Clear the message log
-    })
+    # Get the list of CSV files with relative paths (processed datasets)
+    csv_files <- list.files(pattern = "*.csv$", full.names = FALSE)
 
+    # Create the zip file with relative paths
+    zip::zip(zipfile = file, files = csv_files, root = csv_data_dir, recurse = FALSE)
   }
 )
 
@@ -219,16 +221,13 @@ output$downloadFilteredData <- downloadHandler(
   },
   content = function(file) {
     csv_data_dir <- file.path(local_dir, 'csv_data')
-    csv_files <- list.files(csv_data_dir, pattern = "*_filtered.csv$", full.names = FALSE)
-    zip::zip(zipfile = file, files = csv_files, root = csv_data_dir)
-    on.exit({
-      append_to_log("Cleaning Downloaded data...")
-      unlink(local_dir, recursive = TRUE)  # Delete all files in the directory
-      # log_messages("")  # Clear the message log
-    })
+
+    # Get the list of CSV files with relative paths (processed datasets)
+    csv_files <- list.files(pattern = "*_filtered.csv$", full.names = FALSE)
+
+    # Create the zip file with relative paths
+    zip::zip(zipfile = file, files = csv_files, root = csv_data_dir, recurse = FALSE)
+
   }
 )
 }
-
-
-

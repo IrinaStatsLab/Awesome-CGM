@@ -14,7 +14,9 @@ ui <- fluidPage(
                   choices = names(script_paths), multiple = TRUE),
       # Display dataset file requirements
       textOutput("datasetFileRequirements"),
-
+      # File upload for multiple files, with special case for Hall2018
+      # fileInput("files", "Upload Raw Datasheet Folders (as .zip or .db and other file for Hall2018):",
+      #           multiple = TRUE, accept = c(".zip", ".db", ".")),
       fileInput("files", "Upload Raw Datasheet Folders (as .zip or .db and other file for Hall2018):",
                 multiple = TRUE, accept = NULL),
 
@@ -23,7 +25,7 @@ ui <- fluidPage(
 
       # Process button
       actionButton("process", "Process Datasets"),
-      verbatimTextOutput("processStatus"),
+      # verbatimTextOutput("processStatus"),
       # Two separate buttons for downloading datasets
       downloadButton("downloadProcessedData", "Download Processed Datasets"),
       downloadButton("downloadFilteredData", "Download Processed & Filtered Datasets")
@@ -31,8 +33,9 @@ ui <- fluidPage(
 
     mainPanel(
       actionButton('clear_messages', 'Clear Messages'),
-      h3("Processing Log:"),
-      verbatimTextOutput("processLog")  # Accumulating message log
+      h3("Console Output"),
+      verbatimTextOutput("message_text")
+
       # verbatimTextOutput with renderPrint
       # screentext <- reactiveVal("")
       # in any of the observers, the screen_text()
