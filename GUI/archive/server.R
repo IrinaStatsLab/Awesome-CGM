@@ -14,7 +14,7 @@ script_paths <- list(
   Colas2019 = c("Colas2019_preprocessor.R"),
   Hall2018 = c("Hall2018_preprocessor.R"),
   Lynch2022 = c("Lynch2022_preprocessor.R"),
-  O_Malley2021 = c("O_Malley2021_preprocessor.R"),
+  O_Mally2021 = c("O_Mally2021_preprocessor.R"),
   Shah2019 = c("Shah2019_preprocessor.R"),
   Wadwa2023 = c("Wadwa2023_preprocessor.R")
 )
@@ -25,7 +25,7 @@ message_indication <- list(
   Colas2019 = "S1.zip",
   Hall2018 = "pbio.2005143.s010, pbio.2005143.s014.db",
   Lynch2022 = "IOBP2 RCT Public Dataset.zip",
-  O_Malley2021 = "DCLP3 Public Dataset - Release 3 - 2022-08-04.zip",
+  O_Mally2021 = "DCLP3 Public Dataset - Release 3 - 2022-08-04.zip",
   Shah2019 = "CGMND-af920dee-2d6e-4436-bc89-7a7b51239837.zip",
   Wadwa2023 = "PEDAP Public Dataset - Release 3 - 2024-09-25.zip"
 )
@@ -34,19 +34,17 @@ options(shiny.maxRequestSize = 523 * 1024^2)
 
 # Define Server logic
 server <- function(input, output, session) {
+  local_dir <- file.path(getwd(), 'Awesome-CGM_download')
+  # deploy - fetch the source;
+  # the source for the file -> temp file with a name;
+  # tempfile and tempdir
 
-  messages <- reactiveVal("")
-  output$message_text <- renderPrint({
-    cat(messages())
-  })
-  observeEvent(input$clear_messages, {
-    messages("")
-  })
-
-  # local_dir <- file.path(getwd(), 'Awesome-CGM_download')
-  temp_dir <- tempdir()
-  local_dir <- file.path(temp_dir, "awescomeCGM_Download")
-  dir.create(local_dir, showWarnings = FALSE, recursive = TRUE)
+  # Clear the "Awesome-CGM_download" subfolder if it exists
+  if (dir.exists(local_dir)) {
+    unlink(local_dir, recursive = TRUE)  # Remove all contents
+  }
+  # Recreate the "Awesome-CGM_download" directory
+  dir.create(local_dir, recursive = TRUE)
 
   # Initialize shinyFiles settings to allow folder selection
   shinyDirChoose(input, "directory", roots = c(home = "~"), session = session)
@@ -64,21 +62,29 @@ server <- function(input, output, session) {
     Colas2019 = c("Colas2019_preprocessor.R"),
     Hall2018 = c("Hall2018_preprocessor.R"),
     Lynch2022 = c("Lynch2022_preprocessor.R"),
-    O_Malley2021 = c("O_Malley2021_preprocessor.R"),
+    O_Mally2021 = c("O_Mally2021_preprocessor.R"),
     Shah2019 = c("Shah2019_preprocessor.R"),
     Wadwa2023 = c("Wadwa2023_preprocessor.R")
   )
 
+  # TODO: script can live in memory ~ no need to store
+
+  # Download each script from GitHub and save it to local_dir
   for (dataset in names(script_paths)) {
     script_name <- script_paths[[dataset]][1]
 
+    # Construct the full URL for each script
     script_url <- glue("{base_url}/{dataset}/{script_name}")
+
+    # Define the local path to save the script
     local_script_path <- file.path(local_dir, script_name)
+
+    # Download the script
     tryCatch({
       download.file(script_url, local_script_path, method = "curl")
-      messages(paste0(messages(), "Downloaded {script_name} for {dataset} successfully.\n"))
-       }, error = function(e) {
-      # messages(paste0(messages(), "Failed to download {script_name} for {dataset}: {e$message}\n"))
+      message(glue("Downloaded {script_name} for {dataset} successfully."))
+    }, error = function(e) {
+      message(glue("Failed to download {script_name} for {dataset}: {e$message}"))
     })
   }
 
@@ -107,17 +113,19 @@ server <- function(input, output, session) {
     selected_datasets <- input$datasets
 
     if (is.null(uploaded_files) || nrow(uploaded_files) == 0) {
-      # output$processStatus <- renderText("No files selected.")
-      messages(paste0(messages(), "No files selected.\n"))
-
+      output$processStatus <- renderText("No files selected.")
       return()
     }
     if (is.null(selected_datasets) || length(selected_datasets) == 0) {
-      # output$processStatus <- renderText("No datasets selected.")
-      messages(paste0(messages(), "No datasets selected.\n"))
-
+      output$processStatus <- renderText("No datasets selected.")
       return()
     }
+
+    # Update status to indicate which dataset is currently processing
+    output$processStatus <- renderText(paste("Processing dataset:", dataset, "..."))
+
+    # Track the processing status for multiple datasets
+    status_messages <- c()
 
     files_zipped_name <- uploaded_files$name[grepl('*.zip$', uploaded_files$name, ignore.case=TRUE)]
     files_nonzip_name <- uploaded_files$name[!grepl('*.zip$', uploaded_files$name, ignore.case=TRUE)]
@@ -143,42 +151,36 @@ server <- function(input, output, session) {
         dir.create(exdir, recursive = TRUE)
       }
 
+
       if (basename(exdir)=='S1'){
-        messages(paste0(messages(), "Unzipping...\n"))
         unzip(zip, exdir = local_dir)
-        # message(paste("Unzipped", zip, "to", local_dir))
-        # messages(paste0(messages(), paste("Unzipped", zip, "to", local_dir,'\n')))
+        message(paste("Unzipped", zip, "to", local_dir)) # change to ShinyUI message; - messagebox
 
       }
       else {
-        messages(paste0(messages(), "Unzipping...\n"))
         unzip(zip, exdir = exdir)
-        # messages(paste0(messages(), paste("Unzipped", zip, "to", exdir,'\n')))
-
+        message(paste("Unzipped", zip, "to", exdir)) # textOutput in shiny;
+        # RenderPrint()
       }
     }, files_zipped, extract_path)
 
     # Run all downloaded scripts concurrently
     tryCatch({
+      # Save the current working directory
+      original_wd <- getwd()
+      setwd(local_dir)
       lapply(selected_datasets, function(dataset) {
         script_path <- file.path(local_dir, script_paths[[dataset]][1])
 
         if (file.exists(script_path)) {
           source(script_path)
-          messages(paste0(messages(), paste("Processing", dataset, "...\n")))
-
         }
         if (input$applyMissingFilter && file.exists("filter_missing_data.R")) {
           source("filter_missing_data.R")
-          messages(paste0(messages(), paste("Filtering Missingness for", dataset, "...\n")))
-
         }
-        # status_messages <<- c(status_messages, paste("Processed dataset:", dataset))
-
-        messages(paste0(messages(), paste("Finished Processed", dataset, "!\n")))
-
+        status_messages <<- c(status_messages, paste("Processed dataset:", dataset))
       })
-      # setwd(original_wd)
+      setwd(original_wd)
 
       # Enable appropriate download buttons
       if (input$applyMissingFilter) {
@@ -189,13 +191,16 @@ server <- function(input, output, session) {
         disable("downloadFilteredData")
       }
 
+      # Display the accumulated status messages
+      output$processStatus <- renderText(paste(status_messages, collapse = "\n"))
+
     }, error = function(e) {
       # Restore the original working directory in case of an error
-      # setwd(original_wd)
+      setwd(original_wd)
 
       # Display the error
-      messages(paste0(messages(), paste("Error processing datasets:", e$message)))
-   })
+      output$processStatus <- renderText(paste("Error processing datasets:", e$message))
+    })
   })
 
 
@@ -206,12 +211,14 @@ output$downloadProcessedData <- downloadHandler(
   },
   content = function(file) {
     csv_data_dir <- file.path(local_dir, 'csv_data')
+    old_wd <- setwd(csv_data_dir)
+    on.exit(setwd(old_wd))
 
     # Get the list of CSV files with relative paths (processed datasets)
     csv_files <- list.files(pattern = "*.csv$", full.names = FALSE)
 
     # Create the zip file with relative paths
-    zip::zip(zipfile = file, files = csv_files, root = csv_data_dir, recurse = FALSE)
+    zip::zip(zipfile = file, files = csv_files, recurse = FALSE)
   }
 )
 
@@ -222,13 +229,24 @@ output$downloadFilteredData <- downloadHandler(
   },
   content = function(file) {
     csv_data_dir <- file.path(local_dir, 'csv_data')
+    old_wd <- setwd(csv_data_dir)
+    on.exit(setwd(old_wd))
 
     # Get the list of CSV files with relative paths (processed datasets)
     csv_files <- list.files(pattern = "*_filtered.csv$", full.names = FALSE)
 
     # Create the zip file with relative paths
-    zip::zip(zipfile = file, files = csv_files, root = csv_data_dir, recurse = FALSE)
+    zip::zip(zipfile = file, files = csv_files, recurse = FALSE)
 
   }
 )
 }
+
+
+# TODO: after execution each server, clean up the folder 'Awesome-CGM_download'. I know currently we clean that folder when initating
+# shinyApp(ui = ui, server = server)
+
+# Load bar -
+
+# Resetting the variable selection after each download action
+

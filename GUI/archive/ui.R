@@ -25,17 +25,14 @@ ui <- fluidPage(
 
       # Process button
       actionButton("process", "Process Datasets"),
-      # verbatimTextOutput("processStatus"),
+      verbatimTextOutput("processStatus"),
       # Two separate buttons for downloading datasets
       downloadButton("downloadProcessedData", "Download Processed Datasets"),
       downloadButton("downloadFilteredData", "Download Processed & Filtered Datasets")
     ),
 
     mainPanel(
-      actionButton('clear_messages', 'Clear Messages'),
-      h3("Console Output"),
-      verbatimTextOutput("message_text")
-
+      verbatimTextOutput("processStatus")
       # verbatimTextOutput with renderPrint
       # screentext <- reactiveVal("")
       # in any of the observers, the screen_text()
