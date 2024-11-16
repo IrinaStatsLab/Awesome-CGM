@@ -65,7 +65,12 @@ df_final <- df %>%
          # Keep 'age' from the original data (it assumes 'Age' exists in the dataset)
          age = as.numeric(Age),
          # Assign 'insulinModality' as NA (this could be added later if information is available)
-         insulinModality = NA_integer_) %>%  group_by(id) %>%
+         insulinModality = NA_integer_) %>%  
+  # Remove NA times and gl values
+  filter(!is.na(time), !is.na(gl)) %>%
+  group_by(id) %>%
+  # Ensure that time is in order
+  arrange(time) %>%
   mutate(pseudoID = cur_group_id() + 8000) %>%
   # Ungroup the dataset after creating pseudoID
   ungroup() %>%

@@ -36,7 +36,11 @@ final_data <- merged_data %>%
     device = "Dexcom G6",
     dataset = "o_malley2021"
   ) %>%
+  # Remove NA times and gl values
+  filter(!is.na(time), !is.na(gl)) %>%
   group_by(id) %>%
+  # Ensure that time is in order
+  arrange(time) %>%
   # Generate unique pseudo IDs for each participant by adding 5000 to group IDs
   mutate(pseudoID = cur_group_id() + 5000) %>%
   # Ungroup the dataset after creating pseudoID
