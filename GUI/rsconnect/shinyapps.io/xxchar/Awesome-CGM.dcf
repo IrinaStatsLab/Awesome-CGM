@@ -1,0 +1,13 @@
+name: Awesome-CGM
+title: Awesome-CGM
+username: xxchar
+account: xxchar
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13352365
+bundleId: 9369584
+url: https://xxchar.shinyapps.io/Awesome-CGM/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: archive

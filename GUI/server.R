@@ -1,11 +1,17 @@
 library(shiny)
 library(shinyjs)
 library(shinyFiles)
-library(git2r)
+# library(git2r)
 library(utils)
 library(httr)  # To handle HTTP requests
 library(glue)  # To simplify URL string construction
 library(tools)
+library(tidyverse)
+library(magrittr)
+library(readr)
+library(DBI)
+library(RSQLite)
+
 
 # Define the script paths for multiple datasets
 script_paths <- list(
@@ -29,6 +35,17 @@ message_indication <- list(
   Shah2019 = "CGMND-af920dee-2d6e-4436-bc89-7a7b51239837.zip",
   Wadwa2023 = "PEDAP Public Dataset - Release 3 - 2024-09-25.zip"
 )
+message_indication_with_links <- list(
+  Broll2021 = "No dataset needed, just hit process and download :-). \n",
+  Buckingham2007 = "DirecNetNavigatorPilotStudy.zip (https://public.jaeb.org/direcnet/stdy/166) \n",
+  Colas2019 = "S1.zip (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0225817#sec018) \n",
+  Hall2018 = " pbio.2005143.s010, pbio.2005143.s014.db (https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2005143#pbio.2005143.s010) \n",
+  Lynch2022 = " IOBP2 RCT Public Dataset.zip (https://public.jaeb.org/dataset/579) \n",
+  O_Malley2021 = " DCLP3 Public Dataset - Release 3 - 2022-08-04.zip (https://public.jaeb.org/dataset/573) \n",
+  Shah2019 = " CGMND-af920dee-2d6e-4436-bc89-7a7b51239837.zip (https://public.jaeb.org/dataset/559) \n",
+  Wadwa2023 = " PEDAP Public Dataset - Release 3 - 2024-09-25.zip (https://public.jaeb.org/dataset/599) \n"
+)
+
 
 options(shiny.maxRequestSize = 3 * 1024^3)  # 3GB
 
@@ -82,12 +99,13 @@ server <- function(input, output, session) {
       output$datasetFileRequirements <- renderText("Please select one or more datasets.")
     } else {
       indication_messages <- sapply(selected_datasets, function(dataset) {
-        paste("Dataset:", dataset, "-> Expected Files:", message_indication[[dataset]], "
-              \n")
+        paste0("Dataset: ", dataset, " -> Expected Files:", message_indication_with_links[[dataset]])
       })
       output$datasetFileRequirements <- renderText(paste(indication_messages, collapse = "\n"))
     }
   })
+
+
 
 
   observeEvent(input$process, {
@@ -127,6 +145,7 @@ server <- function(input, output, session) {
     # non_zip file copy # Copy each file to local_dir with its original name
     Map(function(src, dest_name) {
       file.copy(src, file.path(local_dir, dest_name))
+      # con <- dbConnect(RSQLite::SQLite(), dbname = "my_database.sqlite")
     }, files_nonzip, files_nonzip_name)
 
     # Zipped file copy
@@ -162,8 +181,13 @@ server <- function(input, output, session) {
 
         if (file.exists(script_path)) {
           append_to_log(sprintf("Running script for dataset: %s", dataset))
+          if (dataset == "Hall2018") {
+            con <- DBI::dbConnect(RSQLite::SQLite(), dbname = "pbio.2005143.s014.db")
+            append_to_log("Database connection established for Hall2018.")
 
-          source(script_path)
+            # Ensure the database connection is closed after sourcing the script
+            on.exit(DBI::dbDisconnect(con), add = TRUE)
+          } else { source(script_path) }
           append_to_log(sprintf("Completed processing for dataset: %s", dataset))
 
         } else {

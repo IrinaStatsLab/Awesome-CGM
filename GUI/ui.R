@@ -1,6 +1,17 @@
 library(shiny)
 library(shinyjs)
 
+# Define the script paths for multiple datasets
+script_paths <- list(
+  Broll2021 = c("Broll2021_preprocessor.R"),
+  Buckingham2007 = c("Buckingham2007_preprocessor.R"),
+  Colas2019 = c("Colas2019_preprocessor.R"),
+  Hall2018 = c("Hall2018_preprocessor.R"),
+  Lynch2022 = c("Lynch2022_preprocessor.R"),
+  O_Malley2021 = c("O_Malley2021_preprocessor.R"),
+  Shah2019 = c("Shah2019_preprocessor.R"),
+  Wadwa2023 = c("Wadwa2023_preprocessor.R")
+)
 # Define UI
 ui <- fluidPage(
   useShinyjs(),  # Initialize shinyjs
@@ -13,7 +24,7 @@ ui <- fluidPage(
       selectInput("datasets", "Choose Study Datasets:",
                   choices = names(script_paths), multiple = TRUE),
       # Display dataset file requirements
-      textOutput("datasetFileRequirements"),
+      verbatimTextOutput("datasetFileRequirements"),  # Use verbatimTextOutput for better formatting
 
       fileInput("files", "Upload Raw Datasheet Folders (as .zip or .db and other file for Hall2018):",
                 multiple = TRUE, accept = NULL),
@@ -32,6 +43,7 @@ ui <- fluidPage(
     mainPanel(
       actionButton('clear_messages', 'Clear Messages'),
       h3("Processing Log:"),
+      textOutput("processStatus"),
       verbatimTextOutput("processLog")  # Accumulating message log
       # verbatimTextOutput with renderPrint
       # screentext <- reactiveVal("")
