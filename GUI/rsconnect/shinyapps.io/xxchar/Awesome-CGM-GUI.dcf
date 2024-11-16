@@ -5,6 +5,6 @@ account: xxchar
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 13352421
-bundleId: 9371212
+bundleId: 9371348
 url: https://xxchar.shinyapps.io/Awesome-CGM-GUI/
 version: 1

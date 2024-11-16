@@ -55,7 +55,6 @@ server <- function(input, output, session) {
   # local_dir <- file.path(getwd(), 'Awesome-CGM_download')
   temp_dir <- tempdir()
   local_dir <- file.path(temp_dir, "Awesome-CGM_Download")
-
   dir.create(local_dir, recursive = TRUE)
 
 
@@ -72,9 +71,41 @@ server <- function(input, output, session) {
     messages("")
   })
 
+  # Initialize shinyjs
+  useShinyjs()
+
+  statusMessage <- reactiveVal("Ready to start.")
+
+  # Reactive values to track the state of the app
+  appState <- reactiveValues(
+    fileUploaded = FALSE,
+    processing = FALSE,
+    downloadAvailable = FALSE
+  )
+
+  disable("process")
+  # Monitor file uploads
+  observeEvent( {input$files
+    input$datasets},
+{
+    if (!is.null(input$files) ||  "Broll2021" %in% input$datasets ){
+      appState$fileUploaded <- TRUE
+      enable("process")  # Enable 'Process Datasets' button
+      statusMessage("File uploaded successfully. Ready to process datasets.")
+
+    } else {
+      appState$fileUploaded <- FALSE
+        # Keep 'Process Datasets' disabled
+      statusMessage("Please upload a file to proceed.")
+
+    }
+  })
+
+
 
   # Initialize shinyFiles settings to allow folder selection
   shinyDirChoose(input, "directory", roots = c(home = "~"), session = session)
+  enable("clearAll")
 
   disable("downloadProcessedData")
   disable("downloadFilteredData")
@@ -109,6 +140,22 @@ server <- function(input, output, session) {
 
 
   observeEvent(input$process, {
+
+
+    if (appState$fileUploaded
+        ) {
+      # Disable other inputs while processing
+      disable("datasets")
+      disable("files")
+      disable("applyMissingFilter")
+      disable("process")
+
+      appState$processing <- TRUE
+      statusMessage("Processing datasets...")
+      output$processStatus <- renderText({
+        statusMessage()
+      })
+
     csv_data_dir <- file.path(local_dir, 'csv_data')
     if (!dir.exists(csv_data_dir)) {
       dir.create(csv_data_dir, recursive = TRUE)
@@ -119,6 +166,7 @@ server <- function(input, output, session) {
 
     if (length(selected_datasets) == 1 && selected_datasets == "Broll2021") {
       output$processStatus <- renderText("Processing Broll2021: No files needed, just hit process.")
+      enable("process")
     } else {
       # Check for uploaded files
       if (is.null(uploaded_files) || nrow(uploaded_files) == 0) {
@@ -210,15 +258,73 @@ server <- function(input, output, session) {
         disable("downloadFilteredData")
       }
 
+
     }, error = function(e) {
       append_to_log(sprintf("Error: %s", e$message))
 
     })
+
+    statusMessage("Processing complete.")
+    output$processStatus <- renderText({
+      statusMessage()
+    })
+    appState$processing <- FALSE
+    appState$downloadAvailable <- TRUE
+
+    # Enable download button and reset clearAll
+    # enable("downloadProcessed")
+    enable("clearAll")
+    }
   })
+
+  # Disable inputs when download is available
+  observeEvent(appState$downloadAvailable, {
+    if (appState$downloadAvailable) {
+      disable("datasets")
+      disable("files")
+      disable("applyMissingFilter")
+      disable("process")
+    }
+
+  })
+
+observeEvent(input$clearAll, {
+    appState$fileUploaded <- FALSE
+    appState$processing <- FALSE
+    appState$downloadAvailable <- FALSE
+
+    # Reset all inputs
+    reset("datasets")
+    reset("files")
+    updateCheckboxInput(session, "applyMissingFilter", value = FALSE)
+    append_to_log("Selections cleared. Ready to start over.")
+
+    # Re-enable initial inputs
+    enable("datasets")
+    enable("files")
+    enable("applyMissingFilter")
+    disable("process")
+    disable("downloadProcessedData")
+    disable("downloadFilteredData")
+  })
+
+  # Function to append messages to the process log
+  process_log <- reactiveVal("")
+  append_to_log <- function(message) {
+    current_log <- process_log()
+    process_log(paste(current_log, message, sep = "\n"))
+  }
+
+  # Render the process log
+  output$processStatus <- renderText({
+    statusMessage()
+  })
+
 
 
 # Download handler for processed datasets
 output$downloadProcessedData <- downloadHandler(
+
   filename = function() {
     "processed_datasets.zip"
   },
@@ -228,8 +334,7 @@ output$downloadProcessedData <- downloadHandler(
     zip::zip(zipfile = file, files = csv_files, root = csv_data_dir)
 
     on.exit({
-      append_to_log("Cleaning Downloaded data...")
-      unlink(local_dir, recursive = TRUE)  # Delete all files in the directory
+      unlink(csv_data_dir, recursive = TRUE)  # Delete all files in the directory
       # log_messages("")  # Clear the message log
     })
 
@@ -246,8 +351,7 @@ output$downloadFilteredData <- downloadHandler(
     csv_files <- list.files(csv_data_dir, pattern = "*_filtered.csv$", full.names = FALSE)
     zip::zip(zipfile = file, files = csv_files, root = csv_data_dir)
     on.exit({
-      append_to_log("Cleaning Downloaded data...")
-      unlink(local_dir, recursive = TRUE)  # Delete all files in the directory
+      unlink(csv_data_dir, recursive = TRUE)  # Delete all files in the directory
       # log_messages("")  # Clear the message log
     })
   }
