@@ -143,3 +143,43 @@ Minimal exclusion criteria have been implemented for users performing data quali
 An optional visual quality check [R script](https://github.com/IrinaStatsLab/Awesome-CGM/blob/master/R/plot_check_csv.R) is also available, using the `plot_glu()` function from the iglu R package ([GitHub link](https://github.com/charlotte1031/iglu)).
 
 A code reproduction demo can be followed using this README file: [Processing Demo](https://github.com/IrinaStatsLab/Awesome-CGM/blob/master/R/Processing_Demo.md).
+
+### Data Processing R Shiny App
+
+This release includes a **ShinyGUI** app designed to assist users in navigating, downloading, and processing raw CGM datasets. The app provides a user-friendly interface with streamlined options for dataset validation and processing.
+You can access the deployed Shiny at [Awesome-CGM Validation Dataset GUI](https://xxchar.shinyapps.io/Awesome-CGM-GUI/).
+
+**Key Features:**
+1. Navigate users to download raw datasets directly from their original sources and process them using our integrated validation dataset features.
+2. Process and execute datasets either individually or multiple datasets at once.
+3. Allow users to optionally apply a missing data exclusion filter during the processing workflow.
+
+---
+**Important Note:** The deployed Shiny link may be **unusable for datasets exceeding ~500MB** (e.g., the O'Malley and Lynch datasets). Due to server capacity limitations, unzipping these large datasets may cause the app to time out or fail. Users are encouraged to host the shiny locally when processing that two datasets for optimal performance. 
+
+**Follow these steps to set up and use the Shiny app on your local machine:**
+
+1. Clone the Repository
+   
+Download the repository to your local machine:
+```bash
+git clone https://github.com/Charlotte1031/Awesome-CGM.git
+```
+2. Open the Project File
+
+Navigate to the folder where the repository was cloned and open the ShinyGUI.Rproj file in RStudio. This ensures that the correct working directory and project environment are loaded.
+
+3. Run the Shiny App with:
+- Open the server.R or ui.R file in RStudio, then click the **“Run App”** button in the top-right corner of the editor panel.
+- Alternatively, run the following command in the R console:
+```r
+shiny::runApp("GUI")
+```
+
+4. Process Datasets Locally
+
+Once the app launches in your browser or a new window: Navigate the interface to select, validate, and process your datasets. For larger datasets like O’Malley and Lynch, this method ensures stable performance without server limitations.
+ 
+---
+
+
