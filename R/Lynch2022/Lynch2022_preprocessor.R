@@ -37,7 +37,11 @@ df_final = data %>%
          dataset = "lynch2022",
          # Set insulin modality to 0 for insulin injections, 1 for insulin pump
          insulinModality = as.numeric(ifelse(is.na(insulinModality), 0, 1))) %>%
+  # Remove NA times and gl values
+  filter(!is.na(time), !is.na(gl)) %>%
   group_by(id) %>%
+  # Ensure that time is in order
+  arrange(time) %>%
   mutate(pseudoID = cur_group_id() + 1000) %>%
   # Ungroup the dataset after creating pseudoID
   ungroup() %>%

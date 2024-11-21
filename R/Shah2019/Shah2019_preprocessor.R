@@ -45,7 +45,11 @@ T1DE_combined <- T1DE %>%
          # Set the device type to "Dexcom G6" for all subjects
          device = "Dexcom G6") %>%
   # Generate unique pseudo IDs for each participant by adding 9000 to group IDs
+  # Remove NA times and gl values
+  filter(!is.na(time), !is.na(gl)) %>%
   group_by(id) %>%
+  # Ensure that time is in order
+  arrange(time) %>%
   mutate(pseudoID = cur_group_id() + 9000) %>%
   # Ungroup the dataset after creating pseudoID
   ungroup() %>%

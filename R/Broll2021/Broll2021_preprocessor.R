@@ -23,7 +23,11 @@ df2 <- df2 %>%
          sex = NA_character_,  # Placeholder for sex (unknown or missing)
          age = NA_integer_,  # Placeholder for age (unknown or missing)
          insulinModality = NA_integer_) %>% # Placeholder for insulin modality (unknown or missing)
+  # Remove NA times and gl values
+  filter(!is.na(time), !is.na(gl)) %>%
   group_by(id) %>%
+  # Ensure that time is in order
+  arrange(time) %>%
   mutate(pseudoID = cur_group_id() + 7000) %>%
   # Ungroup the dataset after creating pseudoID
   ungroup() %>%
