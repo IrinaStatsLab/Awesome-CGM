@@ -52,11 +52,9 @@ options(shiny.maxRequestSize = 3 * 1024^3)  # 3GB
 # Define Server logic
 server <- function(input, output, session) {
 
-  # local_dir <- file.path(getwd(), 'Awesome-CGM_download')
   temp_dir <- tempdir()
   local_dir <- file.path(temp_dir, "Awesome-CGM_Download")
   dir.create(local_dir, recursive = TRUE)
-
 
   # Reactive value to store log messages
   log_messages <- reactiveVal("")
@@ -123,6 +121,16 @@ server <- function(input, output, session) {
     })
   }
 
+  additional_script_url <- glue("{base_url}/filter_missing_data.R")
+  additional_local_path <- file.path(local_dir, "filter_missing_data.R")
+
+  tryCatch({
+    download.file(additional_script_url, additional_local_path, method = "curl")
+    message("Successfully downloaded filter_missing_data.R")
+  }, error = function(e) {
+    message(glue("Failed to download filter_missing_data.R: {e$message}"))
+  })
+
   observeEvent(input$datasets, {
     selected_datasets <- input$datasets
 
@@ -137,10 +145,7 @@ server <- function(input, output, session) {
   })
 
 
-
-
   observeEvent(input$process, {
-
 
     if (appState$fileUploaded
         ) {
@@ -167,6 +172,8 @@ server <- function(input, output, session) {
     if (length(selected_datasets) == 1 && selected_datasets == "Broll2021") {
       output$processStatus <- renderText("Processing Broll2021: No files needed, just hit process.")
       enable("process")
+
+      appState$downloadAvailable <- TRUE
     } else {
       # Check for uploaded files
       if (is.null(uploaded_files) || nrow(uploaded_files) == 0) {
@@ -183,7 +190,6 @@ server <- function(input, output, session) {
     append_to_log(sprintf("Selected datasets: %s", paste(selected_datasets, collapse = ', ')))
     Sys.sleep(1)  # Simulate
     append_to_log("Processing uploaded files...")
-
 
     files_zipped_name <- uploaded_files$name[grepl('*.zip$', uploaded_files$name, ignore.case=TRUE)]
     files_nonzip_name <- uploaded_files$name[!grepl('*.zip$', uploaded_files$name, ignore.case=TRUE)]
@@ -321,7 +327,6 @@ observeEvent(input$clearAll, {
   })
 
 
-
 # Download handler for processed datasets
 output$downloadProcessedData <- downloadHandler(
 
@@ -335,7 +340,6 @@ output$downloadProcessedData <- downloadHandler(
 
     on.exit({
       unlink(csv_data_dir, recursive = TRUE)  # Delete all files in the directory
-      # log_messages("")  # Clear the message log
     })
 
   }
