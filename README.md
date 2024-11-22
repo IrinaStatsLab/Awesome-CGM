@@ -9,7 +9,7 @@ This collection follows the style of Mike Love's [awesome-multi-omics](https://g
 
 ## Citation and contributions
 
-The new list was updated in October 2024 and assembled by Xinran(Charlotte) Xu, Neo Kok, and Junyan (Samuel) Tan, under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
+The new list was updated in October 2024 and assembled by Xinran (Charlotte) Xu, Neo Kok, and Junyan (Samuel) Tan, under the supervision of Dr. Irina Gaynanova. [Contributions are welcome](https://github.com/irinagain/Awesome-CGM/blob/master/CONTRIBUTING.md).
 
 To cite current version 1.2.0, use
 
@@ -50,7 +50,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Lynch (2022)](https://github.com/irinagain/Awesome-CGM/wiki/Lynch-(2022))
   * The study aims to evaluate the transition of Type 1 diabetes management from a hybrid closed-loop system using an insulin pump and CGM to a biotic pancreas. The Dexcom G6 CGM was used across a population group aged between 6 and 71 years over a 13-week period, with a sample size of 90 participants.
-  * Found by Charlotte Xu. Updated R processor by  Neo Kok. Uploaded by Junyan (Samuel) Tan.
+  * Found by Xinran (Charlotte) Xu. Updated R processor by  Neo Kok. Uploaded by Junyan (Samuel) Tan.
 
 * [Marling (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Marling-(2019))
   * This study has 12 type 1 diabetes patients. 
@@ -70,7 +70,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 
 * [Wadwa (2023)](https://github.com/irinagain/Awesome-CGM/wiki/Wadwa-(2023))
   * The purpose of this study was to improve glycemic outcomes in young children (ages 2-6) with Type 1 diabetes using the t:slim X2 insulin pump with Control-IQ Technology and Dexcom G6 CGM. The study spanned 13 weeks with a total sample size of 102 participants.
-  * Found by Charlotte Xu. Updated R processor by Junyan (Samuel) Tan. Uploaded by Junyan (Samuel) Tan.
+  * Found by Xinran (Charlotte) Xu. Updated R processor by Junyan (Samuel) Tan. Uploaded by Junyan (Samuel) Tan.
 
 * [Weinstock (2016)](https://github.com/irinagain/Awesome-CGM/wiki/Weinstock-(2016))
   * The purpose of this study was to identify factors associated with severe hypoglycemia in older adults (60+) with type 1 diabetes. The total sample size was 200 participants: 100 cases, 100 control. The Dexcom SEVEN PLUS was used to continuously monitor glucose levels for a span of 2 weeks.
@@ -79,7 +79,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
 ### Type 2
 * [Broll (2021)](https://github.com/Charlotte1031/Awesome-CGM/wiki/Broll-(2021))
    * The study involved Type 2 diabetic individuals using the Dexcom G4 CGM. Data from 5 subjects is provided as an example dataset for the development of the [‘iglu’ package](https://github.com/irinagain/iglu). 
-  * Found by Irina Gaynanova. Uploaded by Charlotte Xu.
+  * Found by Irina Gaynanova. Uploaded by Xinran (Charlotte) Xu.
   
 ### Other
 * [Colas (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Colas-(2019))
@@ -96,7 +96,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   
 * [Shah (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Shah-(2019)) 
   * The purpose of this study was to evaluate glucose control in a mixed population (ages 6 and older) and  to establish reference sensor glucose ranges in healthy, non-diabetic individuals using the Dexcom G6 CGM. The sample size was 153 participants, with varying study duration. 
- * Found by Charlotte Xu. Updated R processor by Charlotte Xu. Uploaded by Charlotte Xu .
+ * Found by Xinran (Charlotte) Xu. Updated R processor by Xinran (Charlotte) Xu. Uploaded by Xinran (Charlotte) Xu.
 
   
 ### Simulators
@@ -143,3 +143,43 @@ Minimal exclusion criteria have been implemented for users performing data quali
 An optional visual quality check [R script](https://github.com/IrinaStatsLab/Awesome-CGM/blob/master/R/plot_check_csv.R) is also available, using the `plot_glu()` function from the iglu R package ([GitHub link](https://github.com/charlotte1031/iglu)).
 
 A code reproduction demo can be followed using this README file: [Processing Demo](https://github.com/IrinaStatsLab/Awesome-CGM/blob/master/R/Processing_Demo.md).
+
+### Data Processing R Shiny App
+
+This release includes a **ShinyGUI** app designed to assist users in navigating, downloading, and processing raw CGM datasets. The app provides a user-friendly interface with streamlined options for dataset validation and processing.
+You can access the deployed Shiny at [Awesome-CGM Validation Dataset GUI](https://xxchar.shinyapps.io/Awesome-CGM-GUI/).
+
+**Key Features:**
+1. Navigate users to download raw datasets directly from their original sources and process them using our integrated validation dataset features.
+2. Process and execute datasets either individually or multiple datasets at once.
+3. Allow users to optionally apply a missing data exclusion filter during the processing workflow.
+
+---
+**Important Note:** The deployed Shiny link may be **unusable for datasets exceeding ~500MB** (e.g., the O'Malley and Lynch datasets). Due to server capacity limitations, unzipping these large datasets may cause the app to time out or fail. Users are encouraged to host the shiny locally when processing that two datasets for optimal performance. 
+
+**Follow these steps to set up and use the Shiny app on your local machine:**
+
+1. Clone the Repository
+   
+Download the repository to your local machine:
+```bash
+git clone https://github.com/Charlotte1031/Awesome-CGM.git
+```
+2. Open the Project File
+
+Navigate to the folder where the repository was cloned and open the ShinyGUI.Rproj file in RStudio. This ensures that the correct working directory and project environment are loaded.
+
+3. Run the Shiny App with:
+- Open the server.R or ui.R file in RStudio, then click the **“Run App”** button in the top-right corner of the editor panel.
+- Alternatively, run the following command in the R console:
+```r
+shiny::runApp("GUI")
+```
+
+4. Process Datasets Locally
+
+Once the app launches in your browser or a new window: Navigate the interface to select, validate, and process your datasets. For larger datasets like O’Malley and Lynch, this method ensures stable performance without server limitations.
+ 
+---
+
+
