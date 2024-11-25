@@ -146,13 +146,16 @@ A code reproduction demo can be followed using this README file: [Processing Dem
 
 ### Data Processing R Shiny App
 
-This release includes a **ShinyGUI** app designed to assist users in navigating, downloading, and processing raw CGM datasets. The app provides a user-friendly interface with streamlined options for dataset validation and processing.
+This release includes a **ShinyGUI** app designed to assist users in navigating, downloading, and processing raw CGM datasets. The app provides a user-friendly interface with streamlined options for dataset validation and processing. 
+The app will navigate users to download raw datasets directly from their original sources and process them using our integrated validation dataset features. Users can process and execute datasets either individually or multiple datasets at once. Users can also optionally apply a missing data exclusion filter during the processing workflow.
+
 You can access the deployed Shiny at [Awesome-CGM Validation Dataset GUI](https://xxchar.shinyapps.io/Awesome-CGM-GUI/).
 
-**Key Features:**
-1. Navigate users to download raw datasets directly from their original sources and process them using our integrated validation dataset features.
-2. Process and execute datasets either individually or multiple datasets at once.
-3. Allow users to optionally apply a missing data exclusion filter during the processing workflow.
+**Step to Use the App:**
+1. Open [Awesome-CGM Validation Dataset GUI](https://xxchar.shinyapps.io/Awesome-CGM-GUI/) in you browser.
+2. Browse the dropdown menu to view a list of preloaded **dataset** sources. Select one or multiple datasets to work with. For each selected dataset, upload the required raw data files by downloading them from their original data sources, as indicated by the on-screen message prompts.
+3. Once all the necessary raw data files are uploaded (bulk uploads are supported), click **Process Dataset** to begin processing. If desired, toggle the **Apply Missing Data Filter** checkbox to exclude rows with missing data during processing.
+4. After processing is complete, click the **Download Processed** Data button to download all processed datasets as a single compressed .zip file.
 
 ---
 **Important Note:** The deployed Shiny link may be **unusable for datasets exceeding ~500MB** (e.g., the O'Malley and Lynch datasets). Due to server capacity limitations, unzipping these large datasets may cause the app to time out or fail. Users are encouraged to host the shiny locally when processing that two datasets for optimal performance. 
@@ -178,7 +181,7 @@ shiny::runApp("GUI")
 
 4. Process Datasets Locally
 
-Once the app launches in your browser or a new window: Navigate the interface to select, validate, and process your datasets. For larger datasets like O’Malley and Lynch, this method ensures stable performance without server limitations.
+Once the app launches in your browser or a new window, use the Shiny interface to navigate, select, validate, and process your datasets. For larger datasets, such as O’Malley and Lynch, running the app locally ensures sufficient capacity for processing. Please note that processing these larger datasets may still take a few minutes.
  
 ---
 
