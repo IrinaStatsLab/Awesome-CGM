@@ -56,7 +56,7 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * This study has 12 type 1 diabetes patients. 
   * Found by Irina Gaynanova. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun.
 
-* [O’Mally (2021)](https://github.com/irinagain/Awesome-CGM/wiki/OMalley-(2021))
+* [O’Malley (2021)](https://github.com/irinagain/Awesome-CGM/wiki/OMalley-(2021))
   * This study examined the use of the Dexcom G6 CGM and t:Slim X2 with Control-IQ Technology among children and adults (ages 14+). The study duration was 6 months with a sample size of 168 participants.
   * Found by Junyan (Samuel) Tan. Updated R processor by Junyan (Samuel) Tan. Uploaded by Junyan (Samuel) Tan.
 
