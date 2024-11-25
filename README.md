@@ -151,7 +151,7 @@ The app will navigate users to download raw datasets directly from their origina
 
 You can access the deployed Shiny at [Awesome-CGM Validation Dataset GUI](https://xxchar.shinyapps.io/Awesome-CGM-GUI/).
 
-**Step to Use the App:**
+**Steps to Use the App:**
 1. Open [Awesome-CGM Validation Dataset GUI](https://xxchar.shinyapps.io/Awesome-CGM-GUI/) in you browser.
 2. Browse the dropdown menu to view a list of preloaded **dataset** sources. Select one or multiple datasets to work with. For each selected dataset, upload the required raw data files by downloading them from their original data sources, as indicated by the on-screen message prompts.
 3. Once all the necessary raw data files are uploaded (bulk uploads are supported), click **Process Dataset** to begin processing. If desired, toggle the **Apply Missing Data Filter** checkbox to exclude rows with missing data during processing.
