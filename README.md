@@ -146,8 +146,8 @@ A code reproduction demo can be followed using this README file: [Processing Dem
 
 ### Data Processing R Shiny App
 
-This release includes a **ShinyGUI** app designed to assist users in navigating, downloading, and processing raw CGM datasets. The app provides a user-friendly interface with streamlined options for dataset validation and processing. 
-The app will navigate users to download raw datasets directly from their original sources and process them using our integrated validation dataset features. Users can process and execute datasets either individually or multiple datasets at once. Users can also optionally apply a missing data exclusion filter during the processing workflow.
+This release includes a **ShinyGUI** app designed to assist users in navigating, downloading, and processing raw CGM datasets.
+The app will navigate users to download raw datasets directly from their original sources and process them using their respective AwesomeCGM processing scripts. Users can process and execute datasets either individually or multiple datasets at once. An optional missing data exclusion filter can be applied during processing, enabling more tailored dataset outputs. Processed datasets can then be downloaded in their final form.
 
 You can access the deployed Shiny at [Awesome-CGM Validation Dataset GUI](https://xxchar.shinyapps.io/Awesome-CGM-GUI/).
 
