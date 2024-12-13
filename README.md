@@ -117,7 +117,7 @@ The Awesome-CGM public datasets have been updated with processing scripts design
 - **[Colas2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Colas-(2019))** (Healthy: n=191, Type 2 Diabetic: n=17)
 - **[Broll2021](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Broll-(2021))** (Type 2 Diabetic: n=5)
 - **[Hall2018](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Hall-(2018))** (Healthy: n=38, Pre-Diabetic: n=14, Type 2 Diabetic: n=5)
-- **[Shah2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Shah-(2019))** (Healthy: n=169)
+- **[Shah2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Shah-(2019))** (Healthy: n=168)
 - **[Buckingham2007](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Buckingham-(2007))** (Type 1 Diabetic: n=47)
 - **[Lynch2022](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Lynch-(2022))** (Type 1 Diabetic: n=440)
 - **[O'Malley2021](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/O'Malley-(2021))** (Type 1 Diabetic: n=168)
