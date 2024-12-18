@@ -4,11 +4,12 @@ library(shinyjs)
 # Define the script paths for multiple datasets
 script_paths <- list(
   Broll2021 = c("Broll2021_preprocessor.R"),
+  Brown2019 = c("Brown2019_preprocessor.R"),
   Buckingham2007 = c("Buckingham2007_preprocessor.R"),
   Colas2019 = c("Colas2019_preprocessor.R"),
   Hall2018 = c("Hall2018_preprocessor.R"),
   Lynch2022 = c("Lynch2022_preprocessor.R"),
-  O_Malley2021 = c("O_Malley2021_preprocessor.R"),
+
   Shah2019 = c("Shah2019_preprocessor.R"),
   Wadwa2023 = c("Wadwa2023_preprocessor.R")
 )

@@ -36,6 +36,10 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * This study was designed to test a closed-loop control-to-range artificial pancreas (AP) system. There are two phases to this study. Within Phase 1, there were various stages of this study starting with 0-3 weeks of practice with CGM. This was followed by 2 weeks using the study pump together with CGM known as sensor augmented pump (SAP) therapy. This was used as a baseline and followed by 2 weeks of overnight only closed loop control (CLC) and 2 weeks of 24/7 CLC. During the CLC weeks, insulin was administered by the AP system. Phase 2 continued with only 14 patients - physician’s choice. These 14 patients used the CLC system 24/7 for five additional months.
   * Found by Elizabeth Chun. CGM Processor by David Buchanan, Elizabeth Chun. Uploaded by Elizabeth Chun, Mary Martin.
 
+* [Brown (2019)](https://github.com/irinagain/Awesome-CGM/wiki/Brown-(2019))
+  * This study examined the use of the Dexcom G6 CGM and t:Slim X2 with Control-IQ Technology among children and adults (ages 14+). The study duration was 6 months with a sample size of 168 participants.
+  * Found by Junyan (Samuel) Tan. Updated R processor by Junyan (Samuel) Tan. Uploaded by Junyan (Samuel) Tan.
+
 * [Buckingham (2007)](https://github.com/irinagain/Awesome-CGM/wiki/Buckingham-(2007))
   * This study was designed as a pilot study to analyze use of a CGM for children with diabetes. The subjects first established a baseline during a week blinded use, followed by at home use for 3 months.
   * Found by Eric Wang. CGM Processor by David Buchanan, Elizabeth Chun. Enhanced CGM processing by Rucha Bhat. Uploaded by Elizabeth Chun, Mary Martin.
@@ -56,9 +60,6 @@ Below is a list overview of all datasets with the links, the same list in a tabl
   * This study has 12 type 1 diabetes patients. 
   * Found by Irina Gaynanova. CGM Processor by Elizabeth Chun. Uploaded by Elizabeth Chun.
 
-* [O’Malley (2021)](https://github.com/irinagain/Awesome-CGM/wiki/OMalley-(2021))
-  * This study examined the use of the Dexcom G6 CGM and t:Slim X2 with Control-IQ Technology among children and adults (ages 14+). The study duration was 6 months with a sample size of 168 participants.
-  * Found by Junyan (Samuel) Tan. Updated R processor by Junyan (Samuel) Tan. Uploaded by Junyan (Samuel) Tan.
 
 * [Tamborlane (2008)](https://github.com/irinagain/Awesome-CGM/wiki/Tamborlane-(2008))
   * This study was designed to test CGM as a technology to assist in diabetes care. The randomized trial was intended to determine if CGM usage had a positive effect on diabetes management. The total subjects were split into two cohorts based on A1c results, with one cohort having initial A1c measurements from 7-10% and the second cohort of those with A1c levels <7%. Within each cohort, subjects were randomly assigned to a test (CGM) or control group.
@@ -116,11 +117,11 @@ The Awesome-CGM public datasets have been updated with processing scripts design
 
 - **[Colas2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Colas-(2019))** (Healthy: n=191, Type 2 Diabetic: n=17)
 - **[Broll2021](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Broll-(2021))** (Type 2 Diabetic: n=5)
+- **[Brown2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Brown-(2019))** (Type 1 Diabetic: n=168)
 - **[Hall2018](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Hall-(2018))** (Healthy: n=38, Pre-Diabetic: n=14, Type 2 Diabetic: n=5)
 - **[Shah2019](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Shah-(2019))** (Healthy: n=168)
 - **[Buckingham2007](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Buckingham-(2007))** (Type 1 Diabetic: n=47)
 - **[Lynch2022](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Lynch-(2022))** (Type 1 Diabetic: n=440)
-- **[O'Malley2021](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/O'Malley-(2021))** (Type 1 Diabetic: n=168)
 - **[Wadwa2023](https://github.com/IrinaStatsLab/Awesome-CGM/wiki/Wadwa-(2023))** (Type 1 Diabetic: n=102)
 
 Each subject is uniquely identified using a pseudo-ordered ID format, with the first digit representing the dataset (e.g., the first subject in the updated Colas2019 dataset is assigned ID 3001, and in the Lynch2022 dataset, ID 1401).
@@ -158,7 +159,7 @@ You can access the deployed Shiny at [Awesome-CGM Validation Dataset GUI](https:
 4. After processing is complete, click the **Download Processed** Data button to download all processed datasets as a single compressed .zip file.
 
 ---
-**Important Note:** The deployed Shiny link may be **unusable for datasets exceeding ~500MB** (e.g., the O'Malley and Lynch datasets). Due to server capacity limitations, unzipping these large datasets may cause the app to time out or fail. Users are encouraged to host the shiny locally when processing that two datasets for optimal performance. 
+**Important Note:** The deployed Shiny link may be **unusable for datasets exceeding ~500MB** (e.g., the Brown and Lynch datasets). Due to server capacity limitations, unzipping these large datasets may cause the app to time out or fail. Users are encouraged to host the shiny locally when processing that two datasets for optimal performance. 
 
 **Follow these steps to set up and use the Shiny app on your local machine:**
 
@@ -181,7 +182,7 @@ shiny::runApp("GUI")
 
 4. Process Datasets Locally
 
-Once the app launches in your browser or a new window, use the Shiny interface to navigate, select, validate, and process your datasets. For larger datasets, such as O’Malley and Lynch, running the app locally ensures sufficient capacity for processing. Please note that processing these larger datasets may still take a few minutes.
+Once the app launches in your browser or a new window, use the Shiny interface to navigate, select, validate, and process your datasets. For larger datasets, such as Brown and Lynch, running the app locally ensures sufficient capacity for processing. Please note that processing these larger datasets may still take a few minutes.
  
 ---
 

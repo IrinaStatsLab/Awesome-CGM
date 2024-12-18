@@ -16,32 +16,32 @@ library(RSQLite)
 # Define the script paths for multiple datasets
 script_paths <- list(
   Broll2021 = c("Broll2021_preprocessor.R"),
+  Brown2019 = c("Brown2019_preprocessor.R"),
   Buckingham2007 = c("Buckingham2007_preprocessor.R"),
   Colas2019 = c("Colas2019_preprocessor.R"),
   Hall2018 = c("Hall2018_preprocessor.R"),
   Lynch2022 = c("Lynch2022_preprocessor.R"),
-  O_Malley2021 = c("O_Malley2021_preprocessor.R"),
   Shah2019 = c("Shah2019_preprocessor.R"),
   Wadwa2023 = c("Wadwa2023_preprocessor.R")
 )
 # Define the message indication paths with expected dataset files
 message_indication <- list(
   Broll2021 = "No dataset needed, just hit process and download :-)",
+  Brown2019 = "DCLP3 Public Dataset - Release 3 - 2022-08-04.zip",
   Buckingham2007 = "DirecNetNavigatorPilotStudy.zip",
   Colas2019 = "S1.zip",
   Hall2018 = "pbio.2005143.s010, pbio.2005143.s014.db",
   Lynch2022 = "IOBP2 RCT Public Dataset.zip",
-  O_Malley2021 = "DCLP3 Public Dataset - Release 3 - 2022-08-04.zip",
   Shah2019 = "CGMND-af920dee-2d6e-4436-bc89-7a7b51239837.zip",
   Wadwa2023 = "PEDAP Public Dataset - Release 3 - 2024-09-25.zip"
 )
 message_indication_with_links <- list(
   Broll2021 = "No dataset needed, just hit process and download :-). \n",
+  Brown2019 = " DCLP3 Public Dataset - Release 3 - 2022-08-04.zip (https://public.jaeb.org/dataset/573) \n",
   Buckingham2007 = "DirecNetNavigatorPilotStudy.zip (https://public.jaeb.org/direcnet/stdy/166) \n",
   Colas2019 = "S1.zip (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0225817#sec018) \n",
   Hall2018 = " pbio.2005143.s010, pbio.2005143.s014.db (https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.2005143#pbio.2005143.s010) \n",
   Lynch2022 = " IOBP2 RCT Public Dataset.zip (https://public.jaeb.org/dataset/579) \n",
-  O_Malley2021 = " DCLP3 Public Dataset - Release 3 - 2022-08-04.zip (https://public.jaeb.org/dataset/573) \n",
   Shah2019 = " CGMND-af920dee-2d6e-4436-bc89-7a7b51239837.zip (https://public.jaeb.org/dataset/559) \n",
   Wadwa2023 = " PEDAP Public Dataset - Release 3 - 2024-09-25.zip (https://public.jaeb.org/dataset/599) \n"
 )
